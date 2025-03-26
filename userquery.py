@@ -29,68 +29,67 @@ def get_amadeus_token():
         return None
 
 def load_airport_data():
-    """Load the airport dataset for city to airport code mapping."""
+    """Load the airport dataset and prepare city-airport display format."""
     try:
         df = pd.read_csv("airports-code@public.csv", delimiter=";")
-        # Display a sample of the data for verification
-        st.expander("Airport Data Sample (First 5 rows)").write(df.head())
+        df = df.rename(columns={"Airport Code": "IATA Code"})  # ensure consistency
+        df["City-Airport"] = df["City Name"] + " (" + df["IATA Code"] + ")"
         return df
     except Exception as e:
         st.error(f"Error loading airport data: {e}")
-        # Create a fallback with common airports if the CSV fails to load
+        # Fallback if CSV fails
         data = {
             "City Name": ["New York", "Los Angeles", "London", "Paris", "Tokyo", "Sydney"],
-            "Airport Code": ["JFK", "LAX", "LHR", "CDG", "HND", "SYD"]
+            "IATA Code": ["JFK", "LAX", "LHR", "CDG", "HND", "SYD"]
         }
-        return pd.DataFrame(data)
+        df = pd.DataFrame(data)
+        df["City-Airport"] = df["City Name"] + " (" + df["IATA Code"] + ")"
+        return df
 
-def get_airport_code(city, airport_data):
-    """Retrieve the IATA airport code for a given city."""
-    if airport_data.empty:
-        return None
-    
-    # Try to find an exact match first
-    match = airport_data[airport_data["City Name"].str.lower() == city.lower()]
-    
-    # Log what we found for debugging
-    if not match.empty:
-        code = match["Airport Code"].values[0]
-        # Make sure the code is valid (3 letters)
-        if code and isinstance(code, str) and len(code) == 3:
-            return code.upper()  # Ensure the code is uppercase
-    
+
+def get_airport_code(city_airport_str, airport_data):
+    """Extract IATA code from formatted string 'City (IATA)'."""
+    if "(" in city_airport_str and ")" in city_airport_str:
+        return city_airport_str.split("(")[-1].replace(")", "").strip()
     return None
 
-def get_flights(token, dep_iata, arr_iata, flight_date, adults=1):
-    """Fetch flight offers from Amadeus API using IATA codes."""
+
+def get_flights(token, dep_iata, arr_iata, flight_date, return_date=None, adults=1, children=0, cabin_class="ECONOMY"):
+    """Fetch flight offers from Amadeus API using IATA codes with full round-trip and traveler support."""
     url = "https://test.api.amadeus.com/v2/shopping/flight-offers"
     
     headers = {
         "Authorization": f"Bearer {token}"
     }
-    
-    # Display the IATA codes being used
-    st.info(f"Searching flights from {dep_iata} to {arr_iata} on {flight_date}")
-    
+
+    st.info(f"Searching flights from {dep_iata} to {arr_iata} on {flight_date}" +
+            (f" and returning on {return_date}" if return_date else "") +
+            f" | Class: {cabin_class} | Adults: {adults} | Children: {children}")
+
     params = {
         "originLocationCode": dep_iata,
         "destinationLocationCode": arr_iata,
         "departureDate": flight_date,
         "adults": adults,
-        "max": 10,
-        "currencyCode": "USD"  # Adding explicit currency
+        "children": children,
+        "travelClass": cabin_class.upper().replace(" ", "_"),
+        "max": 5,
+        "currencyCode": "USD"
     }
-    
+
+    # Add return date if it's a round trip
+    if return_date:
+        params["returnDate"] = return_date
+
     try:
         response = requests.get(url, headers=headers, params=params)
-        
-        # Log the full request and response for debugging
+
         st.expander("API Request Details (for debugging)").write({
             "url": url,
             "params": params,
             "response_code": response.status_code
         })
-        
+
         if response.status_code == 200:
             return response.json().get("data", [])
         else:
@@ -106,6 +105,7 @@ def get_flights(token, dep_iata, arr_iata, flight_date, adults=1):
         st.error(f"Exception while fetching flights: {str(e)}")
         return []
 
+
 def format_datetime(datetime_str):
     """Format datetime string from API to a more readable format."""
     if not datetime_str:
@@ -118,16 +118,17 @@ def format_datetime(datetime_str):
         return datetime_str
 
 def main():
+    
     st.title("Flight Query Form ✈️")
     st.write("Fill in your flight details to receive personalized flight recommendations.")
-
+    user_no = st.number_input("Please enter your user number:", min_value=0, step=1)
     # Test token button
-    if st.button("Test Amadeus Token"):
-        token = get_amadeus_token()
-        if token:
-            st.success(f"Successfully obtained Amadeus token! Token starts with: {token[:10]}...")
-        else:
-            st.error("Failed to get Amadeus token. Check your API credentials.")
+    #if st.button("Test Amadeus Token"):
+    #    token = get_amadeus_token()
+    #    if token:
+    #        st.success(f"Successfully obtained Amadeus token! Token starts with: {token[:10]}...")
+    ##    else:
+    #        st.error("Failed to get Amadeus token. Check your API credentials.")
 
     # Load airport data
     airport_data = load_airport_data()
@@ -136,10 +137,17 @@ def main():
         st.error("Could not load airport data. Please check the CSV file.")
         return
         
-    city_options = ["Select a city"] + sorted(airport_data["City Name"].dropna().unique())
+    city_options = ["Select a city"] + sorted(airport_data["City-Airport"].dropna().unique())
 
     # Get today's date
     today = datetime.date.today()
+
+    # Flight preferences
+    col5, col6 = st.columns(2)
+    with col5:
+        flight_type = st.radio("Flight Type", ["One-way", "Round-trip"], horizontal=True)
+    with col6:
+        cabin_class = st.radio("Cabin Class", ["Economy", "Premium Economy", "Business", "First Class"], horizontal=True)
 
     # User inputs for flights
     col1, col2, col3, col4 = st.columns(4)
@@ -150,14 +158,14 @@ def main():
     with col3:
         start_date = st.date_input("Departure Date", min_value=today)
     with col4:
-        end_date = st.date_input("Return Date", min_value=today)
+        if flight_type != "One-way":
+            end_date = st.date_input("Return Date", min_value=today)
+        else:
+            end_date = None
 
-    # Flight preferences
-    col5, col6 = st.columns(2)
-    with col5:
-        flight_type = st.radio("Flight Type", ["One-way", "Round-trip"], horizontal=True)
-    with col6:
-        cabin_class = st.radio("Cabin Class", ["Economy", "Premium Economy", "Business", "First Class"], horizontal=True)
+
+ 
+
 
     # Direct flights and passenger count
     col7, col8, col9 = st.columns([2, 1, 1])
@@ -169,21 +177,21 @@ def main():
         num_children = st.number_input("Number of Children", min_value=0, step=1)
 
     # Add direct IATA code input option
-    st.write("---")
-    st.write("### Advanced: Enter IATA Codes Directly")
-    st.write("If you're having trouble with city selection, you can enter airport codes directly:")
+    #st.write("---")
+    #st.write("### Advanced: Enter IATA Codes Directly")
+    #st.write("If you're having trouble with city selection, you can enter airport codes directly:")
     
-    col_iata1, col_iata2 = st.columns(2)
-    with col_iata1:
-        direct_dep_iata = st.text_input("Departure Airport Code (e.g., JFK, LAX)", "")
-    with col_iata2:
-        direct_arr_iata = st.text_input("Arrival Airport Code (e.g., LHR, CDG)", "")
+    #col_iata1, col_iata2 = st.columns(2)
+    #with col_iata1:
+    #    direct_dep_iata = st.text_input("Departure Airport Code (e.g., JFK, LAX)", "")
+    #with col_iata2:
+    #    direct_arr_iata = st.text_input("Arrival Airport Code (e.g., LHR, CDG)", "")
     
-    use_direct_codes = st.checkbox("Use direct IATA codes instead of city selection")
+   # use_direct_codes = st.checkbox("Use direct IATA codes instead of city selection")
         
     # Submit button
     if st.button("Search Flights"):
-        if end_date < start_date:
+        if end_date and end_date < start_date:
             st.error("Return date must be the same as or after the departure date.")
             return
             
@@ -196,43 +204,59 @@ def main():
             return
         
         # Determine which IATA codes to use
-        if use_direct_codes:
-            # Validate direct IATA codes
-            if not direct_dep_iata or not direct_arr_iata:
-                st.error("Please enter both departure and arrival IATA codes.")
-                return
+        # if use_direct_codes:
+        #     # Validate direct IATA codes
+        #     if not direct_dep_iata or not direct_arr_iata:
+        #         st.error("Please enter both departure and arrival IATA codes.")
+        #         return
                 
-            if len(direct_dep_iata) != 3 or len(direct_arr_iata) != 3:
-                st.error("IATA codes must be exactly 3 characters.")
-                return
+        #     if len(direct_dep_iata) != 3 or len(direct_arr_iata) != 3:
+        #         st.error("IATA codes must be exactly 3 characters.")
+        #         return
                 
-            dep_iata = direct_dep_iata.upper()
-            arr_iata = direct_arr_iata.upper()
-        else:
+        #     dep_iata = direct_dep_iata.upper()
+        #     arr_iata = direct_arr_iata.upper()
+        # else:
             # Use city-based selection
-            if start_location == "Select a city" or destination == "Select a city":
-                st.error("Please select both a departure and a destination city.")
-                return
-            if start_location == destination:
-                st.error("Departure and destination cannot be the same city.")
-                return
-                
-            # Convert city names to IATA codes
-            dep_iata = get_airport_code(start_location, airport_data)
-            arr_iata = get_airport_code(destination, airport_data)
+        if start_location == "Select a city" or destination == "Select a city":
+            st.error("Please select both a departure and a destination city.")
+            return
+        if start_location == destination:
+            st.error("Departure and destination cannot be the same city.")
+            return
+            
+        # Convert city names to IATA codes
+        dep_iata = get_airport_code(start_location, airport_data)
+        arr_iata = get_airport_code(destination, airport_data)
 
-            if not dep_iata or not arr_iata:
-                st.error("IATA code not found for the selected city. Try using direct IATA code input.")
-                return
+        if not dep_iata or not arr_iata:
+            st.error("IATA code not found for the selected city. Try using direct IATA code input.")
+            return
 
         # Format date for API
         formatted_date = start_date.strftime("%Y-%m-%d")
-        
+        if end_date!=None:
+            formatted_end_date = end_date.strftime("%Y-%m-%d")
+        else:
+            formatted_end_date = None
+
         # Fetch flight data using Amadeus API
         with st.spinner("Searching for flights..."):
-            flights = get_flights(token, dep_iata, arr_iata, formatted_date)
+            flights = get_flights(
+                token,
+                dep_iata,
+                arr_iata,
+                formatted_date,
+                return_date=formatted_end_date,
+                adults=num_adults,
+                children=num_children,
+                cabin_class=cabin_class
+            )
+
+        
         
         if flights:
+            st.expander("API Request Return").write(flights)
             st.subheader("Available Flights ✈️")
             for flight in flights:
                 # Extract and display flight information
