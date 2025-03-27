@@ -8,8 +8,11 @@ OPENAI_API_KEY = ""  # Your OpenAI API key for GPT-4o
 ANTHROPIC_API_KEY = ""  # Your Anthropic API key
 
 # Amadeus API Configuration
-AMADEUS_API_KEY = ""  # Your Amadeus API key
-AMADEUS_API_SECRET = ""  # Your Amadeus API secret
+AMADEUS_API_KEY = "wnkJALiAYNo4duZVG88dgfI6H2jtGGG2"  # Your Amadeus API key
+AMADEUS_API_SECRET = "Q2E3OAO8MRZoBHrj"  # Your Amadeus API secret
+
+# Google Maps API Configuration
+GOOGLE_MAPS_API_KEY = ""  # Your Google Maps API key
 
 # Other API keys can be added here as needed
 # ...
@@ -38,6 +41,10 @@ def load_api_keys():
         os.environ["AMADEUS_API_KEY"] = AMADEUS_API_KEY
     if AMADEUS_API_SECRET:
         os.environ["AMADEUS_API_SECRET"] = AMADEUS_API_SECRET
+        
+    # Set Google Maps API key
+    if GOOGLE_MAPS_API_KEY:
+        os.environ["GOOGLE_MAPS_API_KEY"] = GOOGLE_MAPS_API_KEY
 
 # Add this to your main.py or app startup
 if __name__ == "__main__":

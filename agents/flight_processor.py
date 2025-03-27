@@ -1,5 +1,5 @@
 import json
-from langchain.llms import OpenAI
+from langchain_openai import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
