@@ -1,0 +1,1087 @@
+2025-03-31 21:21:21,179 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:21:21,743 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:21:21,751 - llm_api - INFO - API key validation successful
+2025-03-31 21:21:24,428 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:21:25,101 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:21:25,139 - llm_api - INFO - API key validation successful
+2025-03-31 21:21:30,711 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:21:31,075 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:21:31,080 - llm_api - INFO - API key validation successful
+2025-03-31 21:21:34,171 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:21:34,539 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:21:34,545 - llm_api - INFO - API key validation successful
+2025-03-31 21:21:38,495 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:21:39,449 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:21:39,454 - llm_api - INFO - API key validation successful
+2025-03-31 21:21:42,055 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:21:42,289 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:21:42,293 - llm_api - INFO - API key validation successful
+2025-03-31 21:21:46,639 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:21:47,311 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:21:47,316 - llm_api - INFO - API key validation successful
+2025-03-31 21:21:57,928 - llm_api - INFO - Prompt constructed successfully
+2025-03-31 21:21:57,929 - llm_api - INFO - Flight data has 5 flights
+2025-03-31 21:21:57,929 - llm_api - INFO - Sending request to generate recommendations
+2025-03-31 21:21:57,929 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-03-31 21:21:57,930 - llm_api - INFO - Using model: gpt-4o
+2025-03-31 21:21:57,930 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-03-31 21:22:06,247 - llm_api - INFO - Response status code: 200
+2025-03-31 21:22:06,247 - llm_api - INFO - Successfully received response from OpenAI API
+2025-03-31 21:22:06,248 - llm_api - INFO - Extracting content from response
+2025-03-31 21:22:06,248 - llm_api - INFO - Successfully extracted content (length: 2116)
+2025-03-31 21:23:19,795 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:23:20,191 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:23:20,195 - llm_api - INFO - API key validation successful
+2025-03-31 21:44:01,986 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:44:02,584 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:44:02,592 - llm_api - INFO - API key validation successful
+2025-03-31 21:44:04,305 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:44:04,784 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:44:04,789 - llm_api - INFO - API key validation successful
+2025-03-31 21:44:06,442 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:44:06,730 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:44:06,734 - llm_api - INFO - API key validation successful
+2025-03-31 21:44:11,807 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:44:12,198 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:44:12,203 - llm_api - INFO - API key validation successful
+2025-03-31 21:44:15,491 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:44:15,900 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:44:15,904 - llm_api - INFO - API key validation successful
+2025-03-31 21:44:18,746 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:44:18,918 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:44:18,922 - llm_api - INFO - API key validation successful
+2025-03-31 21:44:21,951 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:44:22,839 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:44:22,843 - llm_api - INFO - API key validation successful
+2025-03-31 21:44:25,284 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:44:25,587 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:44:25,591 - llm_api - INFO - API key validation successful
+2025-03-31 21:44:29,212 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:44:29,789 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:44:29,794 - llm_api - INFO - API key validation successful
+2025-03-31 21:44:40,368 - llm_api - INFO - Prompt constructed successfully
+2025-03-31 21:44:40,368 - llm_api - INFO - Flight data has 5 flights
+2025-03-31 21:44:40,368 - llm_api - INFO - Sending request to generate recommendations
+2025-03-31 21:44:40,368 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-03-31 21:44:40,369 - llm_api - INFO - Using model: gpt-4o
+2025-03-31 21:44:40,369 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-03-31 21:44:56,727 - llm_api - INFO - Response status code: 200
+2025-03-31 21:44:56,728 - llm_api - INFO - Successfully received response from OpenAI API
+2025-03-31 21:44:56,729 - llm_api - INFO - Extracting content from response
+2025-03-31 21:44:56,729 - llm_api - INFO - Successfully extracted content (length: 2500)
+2025-03-31 21:45:18,102 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:45:18,622 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:45:18,626 - llm_api - INFO - API key validation successful
+2025-03-31 21:45:23,936 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:45:24,477 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:45:24,481 - llm_api - INFO - API key validation successful
+2025-03-31 21:45:32,857 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:45:33,393 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:45:33,396 - llm_api - INFO - API key validation successful
+2025-03-31 21:45:39,552 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:45:39,921 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:45:39,925 - llm_api - INFO - API key validation successful
+2025-03-31 21:55:39,866 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:55:40,417 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:55:40,422 - llm_api - INFO - API key validation successful
+2025-03-31 21:55:42,340 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:55:42,768 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:55:42,771 - llm_api - INFO - API key validation successful
+2025-03-31 21:55:47,980 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:55:48,691 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:55:48,693 - llm_api - INFO - API key validation successful
+2025-03-31 21:55:50,844 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:55:51,373 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:55:51,377 - llm_api - INFO - API key validation successful
+2025-03-31 21:55:53,793 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:55:54,191 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:55:54,196 - llm_api - INFO - API key validation successful
+2025-03-31 21:55:56,957 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:55:58,543 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:55:58,547 - llm_api - INFO - API key validation successful
+2025-03-31 21:56:00,547 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:56:01,159 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:56:01,163 - llm_api - INFO - API key validation successful
+2025-03-31 21:56:11,449 - llm_api - INFO - Prompt constructed successfully
+2025-03-31 21:56:11,449 - llm_api - INFO - Flight data has 5 flights
+2025-03-31 21:56:11,450 - llm_api - INFO - Sending request to generate recommendations
+2025-03-31 21:56:11,450 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-03-31 21:56:11,450 - llm_api - INFO - Using model: gpt-4o
+2025-03-31 21:56:11,450 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-03-31 21:56:23,943 - llm_api - INFO - Response status code: 200
+2025-03-31 21:56:23,943 - llm_api - INFO - Successfully received response from OpenAI API
+2025-03-31 21:56:23,944 - llm_api - INFO - Extracting content from response
+2025-03-31 21:56:23,944 - llm_api - INFO - Successfully extracted content (length: 2404)
+2025-03-31 21:56:35,219 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:56:35,783 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:56:35,788 - llm_api - INFO - API key validation successful
+2025-03-31 21:56:41,101 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 21:56:41,546 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 21:56:41,550 - llm_api - INFO - API key validation successful
+2025-03-31 22:01:05,515 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:01:06,145 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:01:06,152 - llm_api - INFO - API key validation successful
+2025-03-31 22:01:10,060 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:01:10,761 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:01:10,766 - llm_api - INFO - API key validation successful
+2025-03-31 22:01:10,822 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:01:11,268 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:01:11,362 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:01:11,366 - llm_api - INFO - API key validation successful
+2025-03-31 22:01:11,567 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:01:11,570 - llm_api - INFO - API key validation successful
+2025-03-31 22:01:15,979 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:01:16,698 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:01:16,701 - llm_api - INFO - API key validation successful
+2025-03-31 22:01:21,155 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:01:21,918 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:01:21,921 - llm_api - INFO - API key validation successful
+2025-03-31 22:01:24,985 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:01:25,298 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:01:25,304 - llm_api - INFO - API key validation successful
+2025-03-31 22:01:30,136 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:01:30,567 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:01:30,572 - llm_api - INFO - API key validation successful
+2025-03-31 22:01:37,971 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:01:38,159 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:01:38,165 - llm_api - INFO - API key validation successful
+2025-03-31 22:01:39,128 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:01:40,967 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:01:40,972 - llm_api - INFO - API key validation successful
+2025-03-31 22:01:51,415 - llm_api - INFO - Prompt constructed successfully
+2025-03-31 22:01:51,415 - llm_api - INFO - Flight data has 5 flights
+2025-03-31 22:01:51,416 - llm_api - INFO - Sending request to generate recommendations
+2025-03-31 22:01:51,416 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-03-31 22:01:51,416 - llm_api - INFO - Using model: gpt-4o
+2025-03-31 22:01:51,416 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-03-31 22:02:03,530 - llm_api - INFO - Response status code: 200
+2025-03-31 22:02:03,530 - llm_api - INFO - Successfully received response from OpenAI API
+2025-03-31 22:02:03,531 - llm_api - INFO - Extracting content from response
+2025-03-31 22:02:03,531 - llm_api - INFO - Successfully extracted content (length: 2000)
+2025-03-31 22:04:12,180 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:04:12,950 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:04:12,955 - llm_api - INFO - API key validation successful
+2025-03-31 22:04:29,297 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:04:29,923 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:04:29,924 - llm_api - INFO - API key validation successful
+2025-03-31 22:06:19,058 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:06:19,534 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:06:19,539 - llm_api - INFO - API key validation successful
+2025-03-31 22:09:01,046 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:09:01,470 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:09:01,475 - llm_api - INFO - API key validation successful
+2025-03-31 22:09:28,762 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:09:29,359 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:09:29,363 - llm_api - INFO - API key validation successful
+2025-03-31 22:09:51,326 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-03-31 22:09:51,776 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-03-31 22:09:51,780 - llm_api - INFO - API key validation successful
+2025-04-01 16:42:39,927 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 16:42:40,482 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 16:42:40,487 - llm_api - INFO - API key validation successful
+2025-04-01 16:49:49,937 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 16:49:50,585 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 16:49:50,592 - llm_api - INFO - API key validation successful
+2025-04-01 16:49:52,021 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 16:49:52,815 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 16:49:52,819 - llm_api - INFO - API key validation successful
+2025-04-01 16:49:57,874 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 16:49:58,525 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 16:49:58,532 - llm_api - INFO - API key validation successful
+2025-04-01 16:50:01,069 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 16:50:01,841 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 16:50:01,846 - llm_api - INFO - API key validation successful
+2025-04-01 16:50:09,281 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 16:50:09,572 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 16:50:09,577 - llm_api - INFO - API key validation successful
+2025-04-01 16:50:10,830 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 16:50:12,011 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 16:50:12,015 - llm_api - INFO - API key validation successful
+2025-04-01 16:50:12,631 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 16:50:13,190 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 16:50:13,194 - llm_api - INFO - API key validation successful
+2025-04-01 16:50:30,085 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 16:50:30,086 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 16:50:30,086 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 16:50:30,086 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 16:50:30,086 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 16:50:30,086 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 16:50:37,135 - llm_api - INFO - Response status code: 200
+2025-04-01 16:50:37,135 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 16:50:37,136 - llm_api - INFO - Extracting content from response
+2025-04-01 16:50:37,136 - llm_api - INFO - Successfully extracted content (length: 1963)
+2025-04-01 16:50:53,233 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 16:50:53,813 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 16:50:53,817 - llm_api - INFO - API key validation successful
+2025-04-01 16:50:58,276 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 16:50:58,590 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 16:50:58,594 - llm_api - INFO - API key validation successful
+2025-04-01 16:53:54,098 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 16:53:54,891 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 16:53:54,896 - llm_api - INFO - API key validation successful
+2025-04-01 17:00:39,211 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:00:42,722 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:00:42,728 - llm_api - INFO - API key validation successful
+2025-04-01 17:00:46,244 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:00:46,789 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:00:46,793 - llm_api - INFO - API key validation successful
+2025-04-01 17:00:49,810 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:00:50,216 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:00:50,221 - llm_api - INFO - API key validation successful
+2025-04-01 17:00:51,715 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:00:52,056 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:00:52,061 - llm_api - INFO - API key validation successful
+2025-04-01 17:00:54,637 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:00:55,222 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:00:55,226 - llm_api - INFO - API key validation successful
+2025-04-01 17:00:56,827 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:00:56,995 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:00:56,999 - llm_api - INFO - API key validation successful
+2025-04-01 17:00:58,454 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:00:59,116 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:00:59,120 - llm_api - INFO - API key validation successful
+2025-04-01 17:01:00,150 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:01:00,547 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:01:00,552 - llm_api - INFO - API key validation successful
+2025-04-01 17:01:12,690 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:01:12,691 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:01:12,691 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:01:12,691 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:01:12,691 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:01:12,691 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:01:23,895 - llm_api - INFO - Response status code: 200
+2025-04-01 17:01:23,896 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:01:23,896 - llm_api - INFO - Extracting content from response
+2025-04-01 17:01:23,896 - llm_api - INFO - Successfully extracted content (length: 2273)
+2025-04-01 17:01:50,697 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:01:51,276 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:01:51,280 - llm_api - INFO - API key validation successful
+2025-04-01 17:01:58,169 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:01:58,502 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:01:58,506 - llm_api - INFO - API key validation successful
+2025-04-01 17:03:18,245 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:03:18,781 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:03:18,789 - llm_api - INFO - API key validation successful
+2025-04-01 17:03:21,572 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:03:21,981 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:03:21,986 - llm_api - INFO - API key validation successful
+2025-04-01 17:03:24,790 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:03:25,148 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:03:25,153 - llm_api - INFO - API key validation successful
+2025-04-01 17:03:28,321 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:03:28,816 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:03:28,821 - llm_api - INFO - API key validation successful
+2025-04-01 17:03:30,159 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:03:30,871 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:03:30,875 - llm_api - INFO - API key validation successful
+2025-04-01 17:03:31,509 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:03:31,900 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:03:31,907 - llm_api - INFO - API key validation successful
+2025-04-01 17:03:32,502 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:03:33,741 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:03:33,745 - llm_api - INFO - API key validation successful
+2025-04-01 17:03:43,741 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:03:43,742 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:03:43,742 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:03:43,742 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:03:43,742 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:03:43,742 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:03:53,117 - llm_api - INFO - Response status code: 200
+2025-04-01 17:03:53,117 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:03:53,118 - llm_api - INFO - Extracting content from response
+2025-04-01 17:03:53,118 - llm_api - INFO - Successfully extracted content (length: 2192)
+2025-04-01 17:04:00,060 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:04:00,419 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:04:00,423 - llm_api - INFO - API key validation successful
+2025-04-01 17:09:57,411 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:09:57,849 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:09:57,856 - llm_api - INFO - API key validation successful
+2025-04-01 17:09:59,690 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:10:02,637 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:10:02,642 - llm_api - INFO - API key validation successful
+2025-04-01 17:10:03,099 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:10:03,581 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:10:03,585 - llm_api - INFO - API key validation successful
+2025-04-01 17:10:05,754 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:10:05,938 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:10:05,942 - llm_api - INFO - API key validation successful
+2025-04-01 17:10:07,397 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:10:07,873 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:10:07,878 - llm_api - INFO - API key validation successful
+2025-04-01 17:10:09,114 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:10:09,684 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:10:09,688 - llm_api - INFO - API key validation successful
+2025-04-01 17:10:09,925 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:10:10,332 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:10:10,336 - llm_api - INFO - API key validation successful
+2025-04-01 17:10:20,087 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:10:20,087 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:10:20,087 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:10:20,088 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:10:20,088 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:10:20,088 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:10:28,492 - llm_api - INFO - Response status code: 200
+2025-04-01 17:10:28,493 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:10:28,493 - llm_api - INFO - Extracting content from response
+2025-04-01 17:10:28,493 - llm_api - INFO - Successfully extracted content (length: 2404)
+2025-04-01 17:10:37,133 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:10:37,327 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:10:37,332 - llm_api - INFO - API key validation successful
+2025-04-01 17:18:37,769 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:18:38,313 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:18:38,321 - llm_api - INFO - API key validation successful
+2025-04-01 17:18:40,270 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:18:41,081 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:18:41,089 - llm_api - INFO - API key validation successful
+2025-04-01 17:18:43,697 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:18:44,238 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:18:44,242 - llm_api - INFO - API key validation successful
+2025-04-01 17:18:48,098 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:18:48,370 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:18:48,375 - llm_api - INFO - API key validation successful
+2025-04-01 17:18:50,106 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:18:50,610 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:18:50,615 - llm_api - INFO - API key validation successful
+2025-04-01 17:18:51,610 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:18:52,110 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:18:52,114 - llm_api - INFO - API key validation successful
+2025-04-01 17:18:52,651 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:18:54,024 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:18:54,031 - llm_api - INFO - API key validation successful
+2025-04-01 17:19:04,578 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:19:04,578 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:19:04,578 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:19:04,578 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:19:04,579 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:19:04,579 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:19:12,762 - llm_api - INFO - Response status code: 200
+2025-04-01 17:19:12,763 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:19:12,763 - llm_api - INFO - Extracting content from response
+2025-04-01 17:19:12,764 - llm_api - INFO - Successfully extracted content (length: 2267)
+2025-04-01 17:19:26,276 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:19:26,902 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:19:26,906 - llm_api - INFO - API key validation successful
+2025-04-01 17:19:29,966 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:19:30,372 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:19:30,387 - llm_api - INFO - API key validation successful
+2025-04-01 17:19:44,304 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:19:44,824 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:19:44,828 - llm_api - INFO - API key validation successful
+2025-04-01 17:23:40,935 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:23:41,428 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:23:41,435 - llm_api - INFO - API key validation successful
+2025-04-01 17:23:43,286 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:23:43,816 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:23:43,820 - llm_api - INFO - API key validation successful
+2025-04-01 17:23:46,691 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:23:47,563 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:23:47,567 - llm_api - INFO - API key validation successful
+2025-04-01 17:23:49,654 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:23:50,199 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:23:50,200 - llm_api - INFO - API key validation successful
+2025-04-01 17:23:51,821 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:23:52,105 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:23:52,109 - llm_api - INFO - API key validation successful
+2025-04-01 17:23:53,785 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:23:54,158 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:23:54,163 - llm_api - INFO - API key validation successful
+2025-04-01 17:23:54,467 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:23:55,081 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:23:55,085 - llm_api - INFO - API key validation successful
+2025-04-01 17:24:06,192 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:24:06,192 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:24:06,193 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:24:06,193 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:24:06,193 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:24:06,193 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:24:14,621 - llm_api - INFO - Response status code: 200
+2025-04-01 17:24:14,621 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:24:14,622 - llm_api - INFO - Extracting content from response
+2025-04-01 17:24:14,622 - llm_api - INFO - Successfully extracted content (length: 2303)
+2025-04-01 17:24:28,718 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:24:29,005 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:24:29,010 - llm_api - INFO - API key validation successful
+2025-04-01 17:24:31,859 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:24:32,661 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:24:32,666 - llm_api - INFO - API key validation successful
+2025-04-01 17:24:37,796 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:24:38,191 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:24:38,196 - llm_api - INFO - API key validation successful
+2025-04-01 17:26:40,133 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:26:40,571 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:26:40,576 - llm_api - INFO - API key validation successful
+2025-04-01 17:26:42,827 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:26:44,674 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:26:44,677 - llm_api - INFO - API key validation successful
+2025-04-01 17:26:46,806 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:26:49,143 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:26:49,147 - llm_api - INFO - API key validation successful
+2025-04-01 17:26:50,190 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:26:50,489 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:26:50,494 - llm_api - INFO - API key validation successful
+2025-04-01 17:26:57,282 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:26:57,487 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:26:57,490 - llm_api - INFO - API key validation successful
+2025-04-01 17:26:59,731 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:27:00,402 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:27:00,408 - llm_api - INFO - API key validation successful
+2025-04-01 17:27:00,794 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:27:01,240 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:27:01,244 - llm_api - INFO - API key validation successful
+2025-04-01 17:27:11,501 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:27:11,501 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:27:11,502 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:27:11,502 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:27:11,502 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:27:11,502 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:27:21,523 - llm_api - INFO - Response status code: 200
+2025-04-01 17:27:21,524 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:27:21,524 - llm_api - INFO - Extracting content from response
+2025-04-01 17:27:21,524 - llm_api - INFO - Successfully extracted content (length: 2069)
+2025-04-01 17:27:56,549 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:27:56,823 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:27:56,827 - llm_api - INFO - API key validation successful
+2025-04-01 17:28:10,520 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:28:10,872 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:28:10,877 - llm_api - INFO - API key validation successful
+2025-04-01 17:28:13,527 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:28:14,028 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:28:14,033 - llm_api - INFO - API key validation successful
+2025-04-01 17:31:55,460 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:31:56,112 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:31:56,119 - llm_api - INFO - API key validation successful
+2025-04-01 17:31:57,584 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:31:57,755 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:31:57,956 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:31:57,961 - llm_api - INFO - API key validation successful
+2025-04-01 17:31:58,271 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:31:58,275 - llm_api - INFO - API key validation successful
+2025-04-01 17:32:02,521 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:32:03,125 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:32:03,130 - llm_api - INFO - API key validation successful
+2025-04-01 17:32:05,969 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:32:06,209 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:32:06,213 - llm_api - INFO - API key validation successful
+2025-04-01 17:32:08,150 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:32:08,654 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:32:08,658 - llm_api - INFO - API key validation successful
+2025-04-01 17:32:10,689 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:32:11,440 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:32:11,445 - llm_api - INFO - API key validation successful
+2025-04-01 17:32:11,922 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:32:12,424 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:32:12,426 - llm_api - INFO - API key validation successful
+2025-04-01 17:32:21,449 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:32:21,449 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:32:21,449 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:32:21,450 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:32:21,450 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:32:21,450 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:32:29,762 - llm_api - INFO - Response status code: 200
+2025-04-01 17:32:29,762 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:32:29,762 - llm_api - INFO - Extracting content from response
+2025-04-01 17:32:29,762 - llm_api - INFO - Successfully extracted content (length: 2092)
+2025-04-01 17:32:33,816 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:32:34,117 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:32:34,123 - llm_api - INFO - API key validation successful
+2025-04-01 17:32:46,259 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:32:46,543 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:32:46,548 - llm_api - INFO - API key validation successful
+2025-04-01 17:36:08,370 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:36:08,798 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:36:08,804 - llm_api - INFO - API key validation successful
+2025-04-01 17:36:11,002 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:36:11,549 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:36:11,554 - llm_api - INFO - API key validation successful
+2025-04-01 17:36:14,739 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:36:15,036 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:36:15,041 - llm_api - INFO - API key validation successful
+2025-04-01 17:36:16,440 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:36:16,949 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:36:16,959 - llm_api - INFO - API key validation successful
+2025-04-01 17:36:19,045 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:36:19,382 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:36:19,387 - llm_api - INFO - API key validation successful
+2025-04-01 17:36:20,599 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:36:20,888 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:36:20,892 - llm_api - INFO - API key validation successful
+2025-04-01 17:36:22,131 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:36:22,581 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:36:22,585 - llm_api - INFO - API key validation successful
+2025-04-01 17:36:23,368 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:36:23,629 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:36:23,641 - llm_api - INFO - API key validation successful
+2025-04-01 17:36:33,983 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:36:33,983 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:36:33,983 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:36:33,983 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:36:33,983 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:36:33,984 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:36:44,224 - llm_api - INFO - Response status code: 200
+2025-04-01 17:36:44,224 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:36:44,225 - llm_api - INFO - Extracting content from response
+2025-04-01 17:36:44,225 - llm_api - INFO - Successfully extracted content (length: 2238)
+2025-04-01 17:36:58,267 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:36:58,859 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:36:58,862 - llm_api - INFO - API key validation successful
+2025-04-01 17:37:02,345 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:37:02,599 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:37:02,603 - llm_api - INFO - API key validation successful
+2025-04-01 17:37:07,167 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:37:07,394 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:37:07,403 - llm_api - INFO - API key validation successful
+2025-04-01 17:37:10,561 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:37:10,972 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:37:10,977 - llm_api - INFO - API key validation successful
+2025-04-01 17:37:28,730 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:37:29,181 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:37:29,188 - llm_api - INFO - API key validation successful
+2025-04-01 17:37:31,714 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:37:32,180 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:37:32,184 - llm_api - INFO - API key validation successful
+2025-04-01 17:37:35,415 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:37:35,941 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:37:35,945 - llm_api - INFO - API key validation successful
+2025-04-01 17:37:38,241 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:37:39,012 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:37:39,017 - llm_api - INFO - API key validation successful
+2025-04-01 17:37:39,579 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:37:39,918 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:37:39,922 - llm_api - INFO - API key validation successful
+2025-04-01 17:37:41,281 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:37:41,878 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:37:41,885 - llm_api - INFO - API key validation successful
+2025-04-01 17:37:42,252 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:37:42,552 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:37:42,557 - llm_api - INFO - API key validation successful
+2025-04-01 17:37:52,269 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:37:52,270 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:37:52,270 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:37:52,270 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:37:52,270 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:37:52,271 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:38:01,848 - llm_api - INFO - Response status code: 200
+2025-04-01 17:38:01,849 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:38:01,849 - llm_api - INFO - Extracting content from response
+2025-04-01 17:38:01,849 - llm_api - INFO - Successfully extracted content (length: 2240)
+2025-04-01 17:38:08,720 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:38:09,116 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:38:09,120 - llm_api - INFO - API key validation successful
+2025-04-01 17:38:12,650 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:38:13,110 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:38:13,115 - llm_api - INFO - API key validation successful
+2025-04-01 17:40:48,112 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:40:48,659 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:40:48,667 - llm_api - INFO - API key validation successful
+2025-04-01 17:40:50,113 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:40:50,295 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:40:50,604 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:40:50,609 - llm_api - INFO - API key validation successful
+2025-04-01 17:40:50,756 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:40:50,758 - llm_api - INFO - API key validation successful
+2025-04-01 17:40:54,478 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:40:55,109 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:40:55,113 - llm_api - INFO - API key validation successful
+2025-04-01 17:40:57,179 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:40:57,570 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:40:57,575 - llm_api - INFO - API key validation successful
+2025-04-01 17:41:00,000 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:41:00,201 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:41:00,207 - llm_api - INFO - API key validation successful
+2025-04-01 17:41:05,245 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:41:05,494 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:41:05,496 - llm_api - INFO - API key validation successful
+2025-04-01 17:41:07,531 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:41:08,830 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:41:08,834 - llm_api - INFO - API key validation successful
+2025-04-01 17:41:09,417 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:41:09,657 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:41:09,660 - llm_api - INFO - API key validation successful
+2025-04-01 17:41:10,885 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:41:11,153 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:41:11,157 - llm_api - INFO - API key validation successful
+2025-04-01 17:41:26,632 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:41:26,633 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:41:26,633 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:41:26,633 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:41:26,633 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:41:26,633 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:41:38,634 - llm_api - INFO - Response status code: 200
+2025-04-01 17:41:38,634 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:41:38,635 - llm_api - INFO - Extracting content from response
+2025-04-01 17:41:38,635 - llm_api - INFO - Successfully extracted content (length: 2230)
+2025-04-01 17:41:48,990 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:41:49,427 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:41:49,431 - llm_api - INFO - API key validation successful
+2025-04-01 17:41:57,724 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:41:58,159 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:41:58,163 - llm_api - INFO - API key validation successful
+2025-04-01 17:43:37,907 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:43:38,362 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:43:38,369 - llm_api - INFO - API key validation successful
+2025-04-01 17:43:40,206 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:43:40,881 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:43:40,885 - llm_api - INFO - API key validation successful
+2025-04-01 17:43:40,950 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:43:41,091 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:43:41,344 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:43:41,349 - llm_api - INFO - API key validation successful
+2025-04-01 17:43:41,596 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:43:41,600 - llm_api - INFO - API key validation successful
+2025-04-01 17:43:45,372 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:43:45,616 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:43:45,621 - llm_api - INFO - API key validation successful
+2025-04-01 17:43:50,746 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:43:51,051 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:43:51,070 - llm_api - INFO - API key validation successful
+2025-04-01 17:43:52,294 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:43:52,937 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:43:52,942 - llm_api - INFO - API key validation successful
+2025-04-01 17:43:54,014 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:43:54,284 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:43:54,286 - llm_api - INFO - API key validation successful
+2025-04-01 17:43:54,932 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:43:55,142 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:43:55,147 - llm_api - INFO - API key validation successful
+2025-04-01 17:44:07,527 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:44:07,527 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:44:07,527 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:44:07,528 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:44:07,530 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:44:07,531 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:44:14,793 - llm_api - INFO - Response status code: 200
+2025-04-01 17:44:14,793 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:44:14,794 - llm_api - INFO - Extracting content from response
+2025-04-01 17:44:14,794 - llm_api - INFO - Successfully extracted content (length: 2240)
+2025-04-01 17:44:30,194 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:44:30,735 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:44:30,739 - llm_api - INFO - API key validation successful
+2025-04-01 17:44:33,869 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:44:34,091 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:44:34,096 - llm_api - INFO - API key validation successful
+2025-04-01 17:44:34,895 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:44:35,070 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:44:35,076 - llm_api - INFO - API key validation successful
+2025-04-01 17:44:35,596 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:44:35,771 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:44:35,776 - llm_api - INFO - API key validation successful
+2025-04-01 17:45:10,623 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:45:11,141 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:45:11,148 - llm_api - INFO - API key validation successful
+2025-04-01 17:45:20,284 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:45:20,443 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:45:20,485 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:45:20,488 - llm_api - INFO - API key validation successful
+2025-04-01 17:45:20,650 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:45:20,654 - llm_api - INFO - API key validation successful
+2025-04-01 17:45:21,283 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:45:21,444 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:45:21,446 - llm_api - INFO - API key validation successful
+2025-04-01 17:45:28,940 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:45:29,415 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:45:29,420 - llm_api - INFO - API key validation successful
+2025-04-01 17:45:41,105 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:45:41,833 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:45:41,838 - llm_api - INFO - API key validation successful
+2025-04-01 17:45:43,142 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:45:43,405 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:45:43,409 - llm_api - INFO - API key validation successful
+2025-04-01 17:45:44,943 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:45:45,356 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:45:45,361 - llm_api - INFO - API key validation successful
+2025-04-01 17:45:45,635 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:45:46,211 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:45:46,216 - llm_api - INFO - API key validation successful
+2025-04-01 17:46:05,532 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:46:05,532 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:46:05,532 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:46:05,532 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:46:05,532 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:46:05,532 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:46:13,170 - llm_api - INFO - Response status code: 200
+2025-04-01 17:46:13,170 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:46:13,171 - llm_api - INFO - Extracting content from response
+2025-04-01 17:46:13,171 - llm_api - INFO - Successfully extracted content (length: 2209)
+2025-04-01 17:46:19,751 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:46:20,199 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:46:20,203 - llm_api - INFO - API key validation successful
+2025-04-01 17:46:24,527 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:46:24,837 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:46:24,856 - llm_api - INFO - API key validation successful
+2025-04-01 17:50:02,600 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:50:02,984 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:50:02,991 - llm_api - INFO - API key validation successful
+2025-04-01 17:50:04,835 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:50:05,300 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:50:05,305 - llm_api - INFO - API key validation successful
+2025-04-01 17:50:08,150 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:50:08,691 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:50:08,697 - llm_api - INFO - API key validation successful
+2025-04-01 17:50:10,805 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:50:11,083 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:50:11,088 - llm_api - INFO - API key validation successful
+2025-04-01 17:50:12,502 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:50:12,959 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:50:12,963 - llm_api - INFO - API key validation successful
+2025-04-01 17:50:14,015 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:50:14,278 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:50:14,281 - llm_api - INFO - API key validation successful
+2025-04-01 17:50:14,675 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:50:14,886 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:50:14,890 - llm_api - INFO - API key validation successful
+2025-04-01 17:50:25,183 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:50:25,184 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:50:25,184 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:50:25,184 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:50:25,185 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:50:25,185 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:50:39,925 - llm_api - INFO - Response status code: 200
+2025-04-01 17:50:39,927 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:50:39,928 - llm_api - INFO - Extracting content from response
+2025-04-01 17:50:39,928 - llm_api - INFO - Successfully extracted content (length: 2175)
+2025-04-01 17:50:43,391 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:50:43,752 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:50:43,756 - llm_api - INFO - API key validation successful
+2025-04-01 17:50:46,807 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:50:47,416 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:50:47,429 - llm_api - INFO - API key validation successful
+2025-04-01 17:51:43,130 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:51:43,700 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:51:43,714 - llm_api - INFO - API key validation successful
+2025-04-01 17:51:45,136 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:51:45,665 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:51:45,670 - llm_api - INFO - API key validation successful
+2025-04-01 17:51:48,676 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:51:49,164 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:51:49,168 - llm_api - INFO - API key validation successful
+2025-04-01 17:51:53,065 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:51:53,710 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:51:53,715 - llm_api - INFO - API key validation successful
+2025-04-01 17:51:54,420 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:51:54,741 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:51:54,761 - llm_api - INFO - API key validation successful
+2025-04-01 17:51:55,860 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:51:56,082 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:51:56,087 - llm_api - INFO - API key validation successful
+2025-04-01 17:51:56,783 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:51:57,152 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:51:57,154 - llm_api - INFO - API key validation successful
+2025-04-01 17:52:10,988 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 17:52:10,989 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 17:52:10,989 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 17:52:10,989 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 17:52:10,990 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 17:52:10,990 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 17:52:19,405 - llm_api - INFO - Response status code: 200
+2025-04-01 17:52:19,406 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 17:52:19,406 - llm_api - INFO - Extracting content from response
+2025-04-01 17:52:19,406 - llm_api - INFO - Successfully extracted content (length: 2251)
+2025-04-01 17:52:25,434 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:52:26,015 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:52:26,020 - llm_api - INFO - API key validation successful
+2025-04-01 17:52:29,237 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 17:52:29,558 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 17:52:29,562 - llm_api - INFO - API key validation successful
+2025-04-01 18:00:22,717 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:00:23,128 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:00:23,134 - llm_api - INFO - API key validation successful
+2025-04-01 18:00:29,656 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:00:30,041 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:00:30,183 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:00:30,187 - llm_api - INFO - API key validation successful
+2025-04-01 18:00:30,365 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:00:30,369 - llm_api - INFO - API key validation successful
+2025-04-01 18:00:34,256 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:00:34,622 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:00:34,630 - llm_api - INFO - API key validation successful
+2025-04-01 18:00:37,871 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:00:38,453 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:00:38,457 - llm_api - INFO - API key validation successful
+2025-04-01 18:00:39,569 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:00:39,830 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:00:39,834 - llm_api - INFO - API key validation successful
+2025-04-01 18:00:41,201 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:00:41,704 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:00:41,706 - llm_api - INFO - API key validation successful
+2025-04-01 18:00:42,173 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:00:42,863 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:00:42,867 - llm_api - INFO - API key validation successful
+2025-04-01 18:00:55,963 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 18:00:55,963 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 18:00:55,963 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 18:00:55,963 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 18:00:55,963 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 18:00:55,964 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 18:01:06,627 - llm_api - INFO - Response status code: 200
+2025-04-01 18:01:06,627 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 18:01:06,628 - llm_api - INFO - Extracting content from response
+2025-04-01 18:01:06,628 - llm_api - INFO - Successfully extracted content (length: 2367)
+2025-04-01 18:01:13,162 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:01:13,640 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:01:13,645 - llm_api - INFO - API key validation successful
+2025-04-01 18:01:13,669 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:01:14,546 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:01:14,550 - llm_api - INFO - API key validation successful
+2025-04-01 18:01:14,551 - db_manager - INFO - Successfully connected to LLM API for database operations
+2025-04-01 18:01:14,551 - db_manager - INFO - Filtering selected flight data to remove unnecessary information
+2025-04-01 18:01:14,551 - db_manager - INFO - Sending request to LLM to filter flight data
+2025-04-01 18:01:14,551 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 18:01:14,551 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 18:01:14,551 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 18:01:21,782 - llm_api - INFO - Response status code: 200
+2025-04-01 18:01:21,782 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 18:01:21,783 - db_manager - INFO - Successfully filtered flight data with LLM (reduced to 1061 chars)
+2025-04-01 18:01:21,788 - db_manager - INFO - Saved filtered flight data to /Users/zywangg/Desktop/545travel_LLM/database/user_2/temp.csv
+2025-04-01 18:01:25,945 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:01:26,401 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:01:26,405 - llm_api - INFO - API key validation successful
+2025-04-01 18:05:45,075 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:05:45,645 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:05:45,652 - llm_api - INFO - API key validation successful
+2025-04-01 18:05:48,209 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:05:48,385 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:05:48,666 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:05:48,674 - llm_api - INFO - API key validation successful
+2025-04-01 18:05:48,882 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:05:48,890 - llm_api - INFO - API key validation successful
+2025-04-01 18:05:49,459 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:05:49,892 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:05:49,896 - llm_api - INFO - API key validation successful
+2025-04-01 18:05:54,928 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:05:55,207 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:05:55,211 - llm_api - INFO - API key validation successful
+2025-04-01 18:05:59,183 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:05:59,481 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:05:59,485 - llm_api - INFO - API key validation successful
+2025-04-01 18:06:00,819 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:06:01,188 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:06:01,193 - llm_api - INFO - API key validation successful
+2025-04-01 18:06:02,485 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:06:02,754 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:06:02,756 - llm_api - INFO - API key validation successful
+2025-04-01 18:06:03,368 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:06:04,016 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:06:04,022 - llm_api - INFO - API key validation successful
+2025-04-01 18:06:13,635 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 18:06:13,635 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 18:06:13,635 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 18:06:13,635 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 18:06:13,636 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 18:06:13,636 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 18:06:27,497 - llm_api - INFO - Response status code: 200
+2025-04-01 18:06:27,497 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 18:06:27,498 - llm_api - INFO - Extracting content from response
+2025-04-01 18:06:27,498 - llm_api - INFO - Successfully extracted content (length: 2596)
+2025-04-01 18:06:33,952 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:06:34,410 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:06:34,414 - llm_api - INFO - API key validation successful
+2025-04-01 18:06:34,437 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:06:34,602 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:06:34,608 - llm_api - INFO - API key validation successful
+2025-04-01 18:06:34,608 - db_manager - INFO - Successfully connected to LLM API for database operations
+2025-04-01 18:06:34,608 - db_manager - INFO - Filtering selected flight data to remove unnecessary information
+2025-04-01 18:06:34,609 - db_manager - INFO - Sending request to LLM to filter flight data
+2025-04-01 18:06:34,609 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 18:06:34,609 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 18:06:34,609 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 18:06:46,072 - llm_api - INFO - Response status code: 200
+2025-04-01 18:06:46,073 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 18:06:46,074 - db_manager - INFO - Successfully filtered flight data with LLM (reduced to 1180 chars)
+2025-04-01 18:06:46,078 - db_manager - INFO - Saved filtered flight data to /Users/zywangg/Desktop/545travel_LLM/database/user_3/temp.csv
+2025-04-01 18:06:50,936 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:06:51,228 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:06:51,233 - llm_api - INFO - API key validation successful
+2025-04-01 18:07:54,274 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:07:54,892 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:07:54,896 - llm_api - INFO - API key validation successful
+2025-04-01 18:07:54,936 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:07:55,389 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:07:55,391 - llm_api - INFO - API key validation successful
+2025-04-01 18:07:55,391 - db_manager - INFO - Successfully connected to LLM API for database operations
+2025-04-01 18:07:55,391 - db_manager - INFO - Filtering selected flight data to remove unnecessary information
+2025-04-01 18:07:55,391 - db_manager - INFO - Sending request to LLM to filter flight data
+2025-04-01 18:07:55,391 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 18:07:55,391 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 18:07:55,391 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 18:08:00,328 - llm_api - INFO - Response status code: 200
+2025-04-01 18:08:00,329 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 18:08:00,330 - db_manager - INFO - Successfully filtered flight data with LLM (reduced to 1152 chars)
+2025-04-01 18:08:00,333 - db_manager - INFO - Saved filtered flight data to /Users/zywangg/Desktop/545travel_LLM/database/user_3/temp.csv
+2025-04-01 18:15:00,673 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:15:01,072 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:15:01,080 - llm_api - INFO - API key validation successful
+2025-04-01 18:15:04,793 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:15:05,170 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:15:05,172 - llm_api - INFO - API key validation successful
+2025-04-01 18:15:08,024 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:15:08,533 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:15:08,537 - llm_api - INFO - API key validation successful
+2025-04-01 18:15:13,354 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:15:13,803 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:15:13,807 - llm_api - INFO - API key validation successful
+2025-04-01 18:15:15,608 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:15:16,011 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:15:16,017 - llm_api - INFO - API key validation successful
+2025-04-01 18:15:17,681 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:15:18,151 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:15:18,156 - llm_api - INFO - API key validation successful
+2025-04-01 18:15:18,585 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:15:18,824 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:15:18,828 - llm_api - INFO - API key validation successful
+2025-04-01 18:15:28,812 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 18:15:28,812 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 18:15:28,812 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 18:15:28,812 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 18:15:28,813 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 18:15:28,813 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 18:15:38,590 - llm_api - INFO - Response status code: 200
+2025-04-01 18:15:38,591 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 18:15:38,592 - llm_api - INFO - Extracting content from response
+2025-04-01 18:15:38,592 - llm_api - INFO - Successfully extracted content (length: 2421)
+2025-04-01 18:15:42,207 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:15:42,404 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:15:42,408 - llm_api - INFO - API key validation successful
+2025-04-01 18:15:42,433 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:15:42,582 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:15:42,586 - llm_api - INFO - API key validation successful
+2025-04-01 18:15:42,586 - db_manager - INFO - Successfully connected to LLM API for database operations
+2025-04-01 18:15:42,586 - db_manager - INFO - Filtering selected flight data to remove unnecessary information
+2025-04-01 18:15:42,587 - db_manager - INFO - Sending request to LLM to filter flight data
+2025-04-01 18:15:42,587 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 18:15:42,587 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 18:15:42,587 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 18:15:48,102 - llm_api - INFO - Response status code: 200
+2025-04-01 18:15:48,103 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 18:15:48,104 - db_manager - INFO - Successfully filtered flight data with LLM (reduced to 1239 chars)
+2025-04-01 18:15:48,109 - db_manager - INFO - Saved filtered flight data to /Users/zywangg/Desktop/545travel_LLM/database/user_1/temp.csv
+2025-04-01 18:16:07,751 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:16:08,495 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:16:08,501 - llm_api - INFO - API key validation successful
+2025-04-01 18:17:06,168 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:17:06,907 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:17:06,911 - llm_api - INFO - API key validation successful
+2025-04-01 18:17:06,951 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:17:07,419 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:17:07,424 - llm_api - INFO - API key validation successful
+2025-04-01 18:17:07,424 - db_manager - INFO - Successfully connected to LLM API for database operations
+2025-04-01 18:17:07,424 - db_manager - INFO - Filtering selected flight data to remove unnecessary information
+2025-04-01 18:17:07,425 - db_manager - INFO - Sending request to LLM to filter flight data
+2025-04-01 18:17:07,425 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 18:17:07,425 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 18:17:07,425 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 18:17:14,546 - llm_api - INFO - Response status code: 200
+2025-04-01 18:17:14,546 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 18:17:14,547 - db_manager - INFO - Successfully filtered flight data with LLM (reduced to 1354 chars)
+2025-04-01 18:17:14,551 - db_manager - INFO - Saved filtered flight data to /Users/zywangg/Desktop/545travel_LLM/database/user_1/temp.csv
+2025-04-01 18:22:47,088 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:22:47,797 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:22:47,804 - llm_api - INFO - API key validation successful
+2025-04-01 18:22:49,460 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:22:49,589 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:22:49,852 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:22:49,859 - llm_api - INFO - API key validation successful
+2025-04-01 18:22:50,031 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:22:50,034 - llm_api - INFO - API key validation successful
+2025-04-01 18:22:53,703 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:22:54,174 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:22:54,178 - llm_api - INFO - API key validation successful
+2025-04-01 18:23:02,155 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:23:02,638 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:23:02,643 - llm_api - INFO - API key validation successful
+2025-04-01 18:23:09,078 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:23:09,246 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:23:09,250 - llm_api - INFO - API key validation successful
+2025-04-01 18:23:11,491 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:23:11,939 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:23:11,943 - llm_api - INFO - API key validation successful
+2025-04-01 18:23:13,377 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:23:13,574 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:23:13,578 - llm_api - INFO - API key validation successful
+2025-04-01 18:23:14,737 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:23:14,956 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:23:14,960 - llm_api - INFO - API key validation successful
+2025-04-01 18:23:17,462 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 18:23:17,462 - llm_api - INFO - Flight data has 1 flights
+2025-04-01 18:23:17,462 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 18:23:17,462 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 18:23:17,462 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 18:23:17,462 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 18:23:35,723 - llm_api - INFO - Response status code: 200
+2025-04-01 18:23:35,724 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 18:23:35,724 - llm_api - INFO - Extracting content from response
+2025-04-01 18:23:35,724 - llm_api - INFO - Successfully extracted content (length: 1603)
+2025-04-01 18:23:45,652 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:23:46,378 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:23:46,383 - llm_api - INFO - API key validation successful
+2025-04-01 18:23:46,422 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:23:46,621 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:23:46,626 - llm_api - INFO - API key validation successful
+2025-04-01 18:23:46,627 - db_manager - INFO - Successfully connected to LLM API for database operations
+2025-04-01 18:23:46,627 - db_manager - INFO - Filtering selected flight data to remove unnecessary information
+2025-04-01 18:23:46,628 - db_manager - INFO - Sending request to LLM to filter flight data
+2025-04-01 18:23:46,628 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 18:23:46,628 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 18:23:46,628 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 18:23:52,809 - llm_api - INFO - Response status code: 200
+2025-04-01 18:23:52,809 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 18:23:52,810 - db_manager - INFO - Successfully filtered flight data with LLM (reduced to 975 chars)
+2025-04-01 18:23:52,814 - db_manager - INFO - Saved filtered flight data to /Users/zywangg/Desktop/545travel_LLM/database/user_2/temp.csv
+2025-04-01 18:23:57,381 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:23:57,822 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:23:57,829 - llm_api - INFO - API key validation successful
+2025-04-01 18:27:47,597 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:27:48,121 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:27:48,128 - llm_api - INFO - API key validation successful
+2025-04-01 18:27:49,961 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:27:50,154 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:27:50,265 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:27:50,270 - llm_api - INFO - API key validation successful
+2025-04-01 18:27:50,330 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:27:50,699 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:27:50,703 - llm_api - INFO - API key validation successful
+2025-04-01 18:27:50,726 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:27:50,728 - llm_api - INFO - API key validation successful
+2025-04-01 18:27:55,443 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:27:56,124 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:27:56,126 - llm_api - INFO - API key validation successful
+2025-04-01 18:27:59,285 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:27:59,984 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:27:59,989 - llm_api - INFO - API key validation successful
+2025-04-01 18:28:00,814 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:28:01,244 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:28:01,247 - llm_api - INFO - API key validation successful
+2025-04-01 18:28:02,583 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:28:02,991 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:28:02,996 - llm_api - INFO - API key validation successful
+2025-04-01 18:28:03,324 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:28:03,598 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:28:03,602 - llm_api - INFO - API key validation successful
+2025-04-01 18:28:14,014 - llm_api - INFO - Prompt constructed successfully
+2025-04-01 18:28:14,014 - llm_api - INFO - Flight data has 5 flights
+2025-04-01 18:28:14,014 - llm_api - INFO - Sending request to generate recommendations
+2025-04-01 18:28:14,015 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 18:28:14,015 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 18:28:14,015 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 18:28:24,798 - llm_api - INFO - Response status code: 200
+2025-04-01 18:28:24,799 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 18:28:24,800 - llm_api - INFO - Extracting content from response
+2025-04-01 18:28:24,800 - llm_api - INFO - Successfully extracted content (length: 2522)
+2025-04-01 18:28:30,106 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:28:30,301 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:28:30,305 - llm_api - INFO - API key validation successful
+2025-04-01 18:28:30,329 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:28:30,693 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:28:30,698 - llm_api - INFO - API key validation successful
+2025-04-01 18:28:30,698 - db_manager - INFO - Successfully connected to LLM API for database operations
+2025-04-01 18:28:30,698 - db_manager - INFO - Filtering selected flight data to remove unnecessary information
+2025-04-01 18:28:30,699 - db_manager - INFO - Sending request to LLM to filter flight data
+2025-04-01 18:28:30,699 - llm_api - INFO - Sending request to OpenAI API: https://api.openai.com/v1/chat/completions
+2025-04-01 18:28:30,699 - llm_api - INFO - Using model: gpt-4o
+2025-04-01 18:28:30,699 - llm_api - INFO - Sending request to gpt-4o with 1 messages
+2025-04-01 18:28:36,768 - llm_api - INFO - Response status code: 200
+2025-04-01 18:28:36,768 - llm_api - INFO - Successfully received response from OpenAI API
+2025-04-01 18:28:36,769 - db_manager - INFO - Successfully filtered flight data with LLM (reduced to 1402 chars)
+2025-04-01 18:28:36,773 - db_manager - INFO - Saved filtered flight data to /Users/zywangg/Desktop/545travel_LLM/database/user_3/temp.csv
+2025-04-01 18:28:41,072 - llm_api - INFO - Initializing LLM API with key starting with: sk-proj-gy...
+2025-04-01 18:28:41,302 - httpx - INFO - HTTP Request: GET https://api.openai.com/v1/models "HTTP/1.1 200 OK"
+2025-04-01 18:28:41,306 - llm_api - INFO - API key validation successful
