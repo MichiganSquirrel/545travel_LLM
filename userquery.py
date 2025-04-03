@@ -7,22 +7,14 @@ import json
 import sys
 import re
 import time
-import traceback  # 添加traceback库以便调试
+import traceback 
 
 # Add project root directory to Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-st.set_page_config(
-    page_title="Flight Search",
-    page_icon="✈️",
-    layout="wide",  # This makes the page wide
-    initial_sidebar_state="expanded"
-)
-
 # Import configuration and API
 from config import load_api_keys
 from api.llm_api import LLMApi
-from utils import load_airport_data, get_airport_code, format_datetime
 
 # First load API keys
 load_api_keys()
@@ -62,6 +54,31 @@ def get_amadeus_token():
     else:
         st.error(f"Error getting Amadeus token: {response.text}")
         return None
+
+def load_airport_data():
+    """Load the airport dataset and prepare city-airport display format."""
+    try:
+        df = pd.read_csv("airports-code@public.csv", delimiter=";")
+        df = df.rename(columns={"Airport Code": "IATA Code"})  # ensure consistency
+        df["City-Airport"] = df["City Name"] + " (" + df["IATA Code"] + ")"
+        return df
+    except Exception as e:
+        st.error(f"Error loading airport data: {e}")
+        # Fallback if CSV fails
+        data = {
+            "City Name": ["New York", "Los Angeles", "London", "Paris", "Tokyo", "Sydney"],
+            "IATA Code": ["JFK", "LAX", "LHR", "CDG", "HND", "SYD"]
+        }
+        df = pd.DataFrame(data)
+        df["City-Airport"] = df["City Name"] + " (" + df["IATA Code"] + ")"
+        return df
+
+
+def get_airport_code(city_airport_str, airport_data):
+    """Extract IATA code from formatted string 'City (IATA)'."""
+    if "(" in city_airport_str and ")" in city_airport_str:
+        return city_airport_str.split("(")[-1].replace(")", "").strip()
+    return None
 
 
 def get_flights(token, dep_iata, arr_iata, flight_date, return_date=None, adults=1, children=0, cabin_class="ECONOMY"):
@@ -115,6 +132,17 @@ def get_flights(token, dep_iata, arr_iata, flight_date, return_date=None, adults
         st.error(f"Exception while fetching flights: {str(e)}")
         return []
 
+
+def format_datetime(datetime_str):
+    """Format datetime string from API to a more readable format."""
+    if not datetime_str:
+        return "N/A"
+    # Parse the ISO format and convert to a readable format
+    try:
+        dt = datetime.datetime.fromisoformat(datetime_str.replace('Z', '+00:00'))
+        return dt.strftime("%Y-%m-%d %H:%M:%S")
+    except:
+        return datetime_str
 
 def process_flights_with_llm(flights, user_query):
     """Process flight data using LLM to create a formatted table and analysis"""
@@ -292,6 +320,16 @@ Please see the detailed information for each flight option below.
     
     return analysis
 
+def format_datetime_short(datetime_str):
+    """Format datetime string to a shorter format for tables."""
+    if not datetime_str or datetime_str == 'N/A':
+        return "N/A"
+    # Parse the ISO format and convert to a readable format
+    try:
+        dt = datetime.datetime.fromisoformat(datetime_str.replace('Z', '+00:00'))
+        return dt.strftime("%m/%d %H:%M")
+    except:
+        return datetime_str
 
 def main():
     
@@ -446,91 +484,206 @@ def main():
             })
 
 def collect_user_preferences():
-    """Collect user preferences for travel planning using a form"""
+    """Collect user preferences for travel planning"""
     st.write("---")
     st.subheader("Your Travel Preferences")
-
-    preferences = {}
-
-    with st.form("travel_preferences_form"):
-        # Travel Style
-        travel_style = st.multiselect(
-            "What type of traveler are you?",
-            ["Cultural Explorer", "Adventure Seeker", "Food Enthusiast", "Shopping Lover", 
-             "Nature Lover", "History Buff", "Relaxation Seeker", "Nightlife Enthusiast"],
-            default=["Cultural Explorer"]
-        )
-
-        # Hotel Preferences
-        hotel_price_level = st.select_slider(
-            "Preferred Hotel Price Level",
-            options=["Budget", "Mid-Range", "Luxury", "Ultra-Luxury"],
-            value="Mid-Range"
-        )
-
-        hotel_location = st.multiselect(
-            "Preferred Hotel Location",
-            ["City Center", "Near Airport", "Near Attractions", "Quiet Area", "Beachfront"],
-            default=["City Center"]
-        )
-
-        hotel_amenities = st.multiselect(
-            "Important Hotel Amenities",
-            ["Free Wi-Fi", "Swimming Pool", "Gym", "Spa", "Restaurant", "Room Service", 
-             "Parking", "Airport Shuttle", "Pet-Friendly", "Business Center"],
-            default=["Free Wi-Fi"]
-        )
-
-        # Activity Preferences
-        activity_intensity = st.select_slider(
-            "Preferred Activity Intensity",
-            options=["Relaxed", "Moderate", "Active", "Very Active"],
-            value="Moderate"
-        )
-
-        activity_interests = st.multiselect(
-            "Activity Interests",
-            ["Museums", "Historical Sites", "Natural Attractions", "Theme Parks", 
-             "Shopping", "Beaches", "Nightlife", "Local Events", "Outdoor Adventures"],
-            default=["Museums", "Historical Sites"]
-        )
-
-        # Food Preferences
-        food_preferences = st.multiselect(
-            "Food Preferences",
-            ["Local Cuisine", "International", "Fine Dining", "Street Food", 
-             "Vegetarian", "Vegan", "Halal", "Kosher", "Casual Dining", "Seafood"],
-            default=["Local Cuisine"]
-        )
-
-        # Transportation
-        transportation_mode = st.multiselect(
-            "Preferred Transportation Modes",
-            ["Public Transit", "Taxi/Ride Share", "Rental Car", "Walking", "Guided Tours", "Bicycle"],
-            default=["Public Transit", "Walking"]
-        )
-
-        # Special Requirements
-        special_requirements = st.text_area("Any special requirements or considerations?", "")
-
-        # Submit button
-        submitted = st.form_submit_button("Save Preferences")
-
-        if submitted:
-            preferences["travel_style"] = travel_style
-            preferences["hotel_price_level"] = hotel_price_level
-            preferences["hotel_location"] = hotel_location
-            preferences["hotel_amenities"] = hotel_amenities
-            preferences["activity_intensity"] = activity_intensity
-            preferences["activity_interests"] = activity_interests
-            preferences["food_preferences"] = food_preferences
-            preferences["transportation_mode"] = transportation_mode
-            if special_requirements:
-                preferences["special_requirements"] = special_requirements
-            return preferences
     
-    return None
-
+    # Create a dictionary to store preferences
+    preferences = {}
+    
+    # Initialize session state for form persistence
+    if 'activity_categories_selected' not in st.session_state:
+        st.session_state.activity_categories_selected = []
+    
+    if 'hotel_price_level' not in st.session_state:
+        st.session_state.hotel_price_level = "Medium"
+        
+    if 'food_price_level' not in st.session_state:
+        st.session_state.food_price_level = "Medium"
+        
+    if 'cuisine_regions_selected' not in st.session_state:
+        st.session_state.cuisine_regions_selected = ["Local Cuisine"]
+    
+    if 'special_requirements' not in st.session_state:
+        st.session_state.special_requirements = ""
+    
+    # Use a form to prevent page refresh on every interaction
+    with st.form(key="preferences_form"):
+        # Activity Interests - Only keep main categories
+        st.write("### Activity Interests")
+        activity_categories = [
+            "Cultural", 
+            "Nature & Outdoors", 
+            "Entertainment", 
+            "Shopping", 
+            "Recreation", 
+            "Nightlife"
+        ]
+        
+        selected_activity_categories = st.multiselect(
+            "Select the types of activities you're interested in:",
+            activity_categories,
+            default=st.session_state.activity_categories_selected,
+            key="activity_categories_widget"
+        )
+        
+        # Hotel Preferences - Only keep price level
+        st.write("### Hotel Preferences")
+        
+        # Price Level - Use English labels
+        hotel_price_level = st.radio(
+            "Preferred Hotel Price Level",
+            options=["Budget", "Medium", "Luxury"],
+            horizontal=True,
+            key="hotel_price_widget",
+            index=["Budget", "Medium", "Luxury"].index(st.session_state.hotel_price_level if st.session_state.hotel_price_level in ["Budget", "Medium", "Luxury"] else "Medium")
+        )
+        
+        # Food Preferences
+        st.write("### Food Preferences")
+        
+        # Food Price Level - Use English labels
+        food_price_level = st.radio(
+            "Preferred Food Price Level",
+            options=["Budget", "Medium", "Luxury"],
+            horizontal=True,
+            key="food_price_widget",
+            index=["Budget", "Medium", "Luxury"].index(st.session_state.food_price_level if st.session_state.food_price_level in ["Budget", "Medium", "Luxury"] else "Medium")
+        )
+        
+        # Cuisine regions - only show regions without detailed categories
+        cuisine_regions = [
+            "Asian", 
+            "European", 
+            "American/Latin", 
+            "Middle Eastern",
+            "African",
+            "Caribbean",
+            "Local Cuisine"
+        ]
+        
+        selected_cuisine_regions = st.multiselect(
+            "Select cuisine regions you're interested in:",
+            cuisine_regions,
+            default=st.session_state.cuisine_regions_selected,
+            key="cuisine_regions_widget"
+        )
+        
+        # Special Requirements
+        st.write("### Special Requirements")
+        
+        special_requirements = st.text_area(
+            "Any special requirements or considerations?", 
+            value=st.session_state.special_requirements,
+            key="special_requirements_widget"
+        )
+        
+        # Submit button for the form
+        submitted = st.form_submit_button("Save Preferences")
+        
+        if submitted:
+            # Update session state values
+            st.session_state.activity_categories_selected = selected_activity_categories
+            st.session_state.hotel_price_level = hotel_price_level
+            st.session_state.food_price_level = food_price_level
+            st.session_state.cuisine_regions_selected = selected_cuisine_regions
+            st.session_state.special_requirements = special_requirements
+    
+    # If form was submitted, process the preferences
+    if 'preferences_form' in st.session_state and st.session_state.preferences_form:
+        # Store preferences in the dictionary
+        preferences["activity_categories"] = selected_activity_categories
+        
+        # Create mapping from categories to API types (hidden in backend)
+        activity_category_mapping = {
+            "Cultural": ["museum", "art_gallery", "historical_landmark", "monument", "performing_arts_theater", "library", "cultural_center"],
+            "Nature & Outdoors": ["park", "national_park", "state_park", "garden", "botanical_garden", "beach", "hiking_area", "trail_walking_path", "natural_feature", "mountain"],
+            "Entertainment": ["amusement_park", "water_park", "movie_theater", "performing_arts_theater", "casino", "concert_hall"],
+            "Shopping": ["shopping_mall", "market", "street_market", "department_store", "clothing_store", "specialty_food_shop", "gift_shop"],
+            "Recreation": ["stadium", "sports_complex", "gym", "fitness_center", "swimming_pool", "golf_course", "spa"],
+            "Nightlife": ["night_club", "bar", "pub", "lounge", "comedy_club"]
+        }
+        
+        # Convert selected categories to API types
+        activity_api_types = []
+        for category in selected_activity_categories:
+            if category in activity_category_mapping:
+                activity_api_types.extend(activity_category_mapping[category])
+        
+        preferences["activity_api_types"] = activity_api_types
+        
+        # Store hotel preferences
+        preferences["hotel_price_level"] = hotel_price_level
+        
+        # Create a mapping for Google Places API types based on hotel price level
+        hotel_type_mapping = {
+            "Budget": ["hostel", "motel", "campground", "guest_house", "lodge"],
+            "Medium": ["hotel", "inn", "bed_and_breakfast", "resort"],
+            "Luxury": ["hotel", "resort", "spa_resort", "luxury_hotel", "villa"]
+        }
+        preferences["hotel_types"] = hotel_type_mapping.get(hotel_price_level, ["hotel"])
+        
+        # Store food preferences
+        preferences["food_price_level"] = food_price_level
+        preferences["cuisine_regions"] = selected_cuisine_regions
+        
+        # Backend mapping for cuisine regions to API types
+        cuisine_region_mapping = {
+            "Asian": ["chinese_restaurant", "japanese_restaurant", "sushi_restaurant", "thai_restaurant", "vietnamese_restaurant", "korean_restaurant", "indian_restaurant"],
+            "European": ["italian_restaurant", "french_restaurant", "greek_restaurant", "spanish_restaurant", "german_restaurant", "british_restaurant"],
+            "American/Latin": ["american_restaurant", "mexican_restaurant", "brazilian_restaurant"],
+            "Middle Eastern": ["turkish_restaurant", "lebanese_restaurant", "moroccan_restaurant"],
+            "African": ["african_restaurant"],
+            "Caribbean": ["caribbean_restaurant"],
+            "Local Cuisine": ["restaurant", "food"]
+        }
+        
+        # Convert selected cuisine regions to API types
+        food_api_types = []
+        for region in selected_cuisine_regions:
+            if region in cuisine_region_mapping:
+                food_api_types.extend(cuisine_region_mapping[region])
+        
+        preferences["food_api_types"] = food_api_types
+        
+        # Store special requirements
+        if special_requirements:
+            preferences["special_requirements"] = special_requirements
+    else:
+        # For initial load, use session state values
+        preferences["activity_categories"] = st.session_state.activity_categories_selected
+        preferences["hotel_price_level"] = st.session_state.hotel_price_level
+        preferences["food_price_level"] = st.session_state.food_price_level
+        preferences["cuisine_regions"] = st.session_state.cuisine_regions_selected
+        
+        if st.session_state.special_requirements:
+            preferences["special_requirements"] = st.session_state.special_requirements
+        
+        # Add API mappings for initial state as well
+        activity_category_mapping = {
+            "Cultural": ["museum", "art_gallery", "historical_landmark", "monument", "performing_arts_theater", "library", "cultural_center"],
+            "Nature & Outdoors": ["park", "national_park", "state_park", "garden", "botanical_garden", "beach", "hiking_area", "trail_walking_path", "natural_feature", "mountain"],
+            "Entertainment": ["amusement_park", "water_park", "movie_theater", "performing_arts_theater", "casino", "concert_hall"],
+            "Shopping": ["shopping_mall", "market", "street_market", "department_store", "clothing_store", "specialty_food_shop", "gift_shop"],
+            "Recreation": ["stadium", "sports_complex", "gym", "fitness_center", "swimming_pool", "golf_course", "spa"],
+            "Nightlife": ["night_club", "bar", "pub", "lounge", "comedy_club"]
+        }
+        
+        activity_api_types = []
+        for category in st.session_state.activity_categories_selected:
+            if category in activity_category_mapping:
+                activity_api_types.extend(activity_category_mapping[category])
+        
+        preferences["activity_api_types"] = activity_api_types
+        
+        hotel_type_mapping = {
+            "Budget": ["hostel", "motel", "campground", "guest_house", "lodge"],
+            "Medium": ["hotel", "inn", "bed_and_breakfast", "resort"],
+            "Luxury": ["hotel", "resort", "spa_resort", "luxury_hotel", "villa"]
+        }
+        preferences["hotel_types"] = hotel_type_mapping.get(st.session_state.hotel_price_level, ["hotel"])
+    
+    return preferences
 
 def save_user_preferences(user_id, preferences, user_query, selected_flight):
     """Save user preferences and flight information to temp.csv"""
@@ -670,6 +823,9 @@ def display_flight_selection(flights, user_query):
             # Save user selection - ensure user_id is available
             if "user_id" not in user_query or not user_query["user_id"]:
                 user_query["user_id"] = "unknown"
+
+            # add a debug print the selected flight json
+            st.sidebar.text(f"Selected flight: {json.dumps(selected_flight, indent=4)}")
                 
             save_success = save_user_selection(user_query, selected_flight, flights, feedback)
             
@@ -821,7 +977,7 @@ def save_user_selection(user_query, selected_flight, all_flights, user_feedback)
         from database.db_manager import DatabaseManager
         
         # Add information prompt
-        st.info("Processing flight data, using AI to intelligently filter important information...")
+        st.info("Processing flight data...")
         
         # Get user_id, use default if not available
         user_id = user_query.get("user_id", "unknown")
@@ -844,23 +1000,9 @@ def save_user_selection(user_query, selected_flight, all_flights, user_feedback)
         
         st.sidebar.success(f"Flight data saved to: {temp_file}")
         
-        # Extract basic user preferences
-        preferences = {
-            "frequent_destinations": {
-                user_query.get("destination", ""): 1
-            },
-            "typical_trip_duration": []
-        }
-        
-        # Update memory bank
-        memory_file = db_manager.update_memory_bank(user_id, preferences)
-        
-        if memory_file:
-            st.sidebar.success(f"User preferences updated in memory bank")
-        
         # Generate simulated travel plan for demonstration
         if selected_flight:
-            # Use filtered flight data
+            # Use flight data
             essential_flight_info = {
                 "flight_index": all_flights.index(selected_flight),
                 "price": selected_flight.get('price', {}).get('total', 'N/A'),
