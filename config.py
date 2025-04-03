@@ -11,8 +11,8 @@ ANTHROPIC_API_KEY = ""  # Your Anthropic API key
 AMADEUS_API_KEY = "wnkJALiAYNo4duZVG88dgfI6H2jtGGG2"  # Your Amadeus API key
 AMADEUS_API_SECRET = "Q2E3OAO8MRZoBHrj"  # Your Amadeus API secret
 
-# Google Maps API Configuration
-GOOGLE_MAPS_API_KEY = ""  # Your Google Maps API key
+# Google Places API Configuration
+GOOGLE_PLACES_API_KEY = "AIzaSyAxDNWWUNd0w7K_v4LZLI51Peu9aelBWp8"  # Your Google Places API key
 
 # Other API keys can be added here as needed
 # ...
@@ -26,9 +26,9 @@ def load_api_keys():
     if OPENAI_API_KEY:
         os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
     else:
-        # 确保API密钥格式正确（移除可能的空格或换行符）
+        # Ensure API key format is correct (remove possible spaces or line breaks)
         api_key = "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"
-        api_key = api_key.strip()  # 移除空格
+        api_key = api_key.strip()  # Remove spaces
         os.environ["OPENAI_API_KEY"] = api_key
         print(f"Using default OpenAI API key: {api_key[:10]}...")
     
@@ -42,9 +42,9 @@ def load_api_keys():
     if AMADEUS_API_SECRET:
         os.environ["AMADEUS_API_SECRET"] = AMADEUS_API_SECRET
         
-    # Set Google Maps API key
-    if GOOGLE_MAPS_API_KEY:
-        os.environ["GOOGLE_MAPS_API_KEY"] = GOOGLE_MAPS_API_KEY
+    # Set Google Places API key
+    if GOOGLE_PLACES_API_KEY:
+        os.environ["GOOGLE_PLACES_API_KEY"] = GOOGLE_PLACES_API_KEY
 
 # Add this to your main.py or app startup
 if __name__ == "__main__":
