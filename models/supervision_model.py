@@ -1,192 +1,212 @@
 import json
 import os
 import pandas as pd
-from typing import Dict, List, Any, Optional
-from langchain_openai import OpenAI
+from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
+from datetime import datetime
+from typing import Dict, Any, List, Optional
 
 class SupervisionModel:
-    def __init__(self, api_key: Optional[str] = None):
-        self.llm = OpenAI(temperature=0.2, api_key=api_key)
+    def __init__(self, database_dir: Optional[str] = None):
+        self.llm = OpenAI(temperature=0.2)
         
-        # 偏好分析模板
-        self.preference_template = """
-        请分析以下对话内容，提取用户在旅行方面的偏好。
+        # Set up database directory
+        if database_dir:
+            self.database_dir = database_dir
+        else:
+            # Default to database folder in project root
+            self.database_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "database")
         
-        对话内容：
-        {conversation}
-        
-        当前已知的用户偏好：
-        {current_preferences}
-        
-        分析要求：
-        1. 提取用户明确表达的新偏好
-        2. 对于与现有偏好冲突的新偏好，保留最新的偏好
-        3. 对每个偏好赋予置信度分数(0.0-1.0)，直接陈述的偏好置信度较高，隐含的偏好置信度较低
-        4. 将偏好分类为以下类型：destination(目的地)、cuisine(美食)、activity(活动)、accommodation(住宿)、transportation(交通)、budget(预算)、duration(行程时长)、season(季节)、travel_style(旅行风格)、companion(同伴类型)
-        
-        请以JSON格式返回提取的偏好，格式如下：
-        [
-            {"preference_type": "destination", "preference_value": "上海", "confidence_score": 0.9}
-        ]
-        
-        如果没有提取到任何偏好，请返回空数组: []
-        """
+        # Ensure database directory exists
+        os.makedirs(self.database_dir, exist_ok=True)
     
-    def analyze_conversation(self, conversation: List[Dict[str, str]], current_memory_bank: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        """
-        分析对话提取和更新用户偏好
+    def _get_user_dir(self, user_id: str) -> str:
+        """Create or get user directory"""
+        user_dir = os.path.join(self.database_dir, f"user_{user_id}")
+        os.makedirs(user_dir, exist_ok=True)
+        return user_dir
         
-        参数:
-            conversation: 对话内容列表，每项包含speaker和message
-            current_memory_bank: 当前的记忆库内容
-            
-        返回:
-            更新后的用户偏好列表
+    def analyze_conversation(self, conversation: List[Dict[str, str]], user_id: str) -> Dict[str, Any]:
         """
+        Analyze conversation to extract and update user preferences
+        
+        Args:
+            conversation: List of conversation messages
+            user_id: User ID
+            
+        Returns:
+            Updated memory bank with preferences
+        """
+        # Get current memory bank
+        current_memory_bank = self.get_memory_bank(user_id)
+        
+        # Check if template exists
+        template_path = "templates/preference_extraction.txt"
+        if os.path.exists(template_path):
+            with open(template_path, "r") as f:
+                template = f.read()
+        else:
+            # Fallback template if file doesn't exist
+            template = """
+            You are an AI assistant that analyzes travel conversations to extract user preferences.
+            
+            Conversation:
+            {conversation}
+            
+            Current user preferences:
+            {current_preferences}
+            
+            Based on the conversation, update the user preferences. Extract information about:
+            1. Preferred destinations
+            2. Preferred airlines
+            3. Cabin class preferences
+            4. Trip duration preferences
+            5. Budget constraints
+            6. Activity interests
+            7. Accommodation preferences
+            
+            Return the updated preferences as a JSON object with these categories.
+            """
+        
+        prompt = PromptTemplate(
+            input_variables=["conversation", "current_preferences"],
+            template=template
+        )
+        
+        chain = LLMChain(llm=self.llm, prompt=prompt)
+        
+        # Extract updated preferences
+        updated_preferences_json = chain.run(
+            conversation=json.dumps(conversation),
+            current_preferences=json.dumps(current_memory_bank.get("preferences", {}))
+        )
+        
         try:
-            # 将对话格式化为文本
-            conversation_text = ""
-            for msg in conversation:
-                # 检查message是否是字符串类型
-                message = msg.get('message', '')
-                if isinstance(message, dict):
-                    message = json.dumps(message, ensure_ascii=False)
-                
-                speaker = "用户" if msg.get('speaker') == 'user' else "系统"
-                conversation_text += f"{speaker}: {message}\n"
+            updated_preferences = json.loads(updated_preferences_json)
             
-            # 格式化当前偏好
-            current_preferences_text = ""
-            for pref in current_memory_bank:
-                current_preferences_text += f"- {pref.get('preference_type')}: {pref.get('preference_value')} (置信度: {pref.get('confidence_score')})\n"
+            # Merge with existing memory bank
+            merged_memory_bank = current_memory_bank.copy()
+            merged_memory_bank["preferences"] = updated_preferences
             
-            if not current_preferences_text:
-                current_preferences_text = "暂无已知偏好"
+            # Save to memory_bank.csv
+            self.save_memory_bank(user_id, merged_memory_bank)
             
-            prompt = PromptTemplate(
-                input_variables=["conversation", "current_preferences"],
-                template=self.preference_template
-            )
-            
-            chain = LLMChain(llm=self.llm, prompt=prompt)
-            
-            # 提取更新后的偏好
-            try:
-                updated_preferences_json = chain.run(
-                    conversation=conversation_text,
-                    current_preferences=current_preferences_text
-                )
-                
-                # 清理JSON字符串，确保它是有效的JSON
-                updated_preferences_json = updated_preferences_json.strip()
-                if updated_preferences_json.startswith("```json"):
-                    updated_preferences_json = updated_preferences_json.split("```json")[1]
-                if updated_preferences_json.endswith("```"):
-                    updated_preferences_json = updated_preferences_json.split("```")[0]
-                
-                updated_preferences = json.loads(updated_preferences_json)
-                
-                # 确保每个偏好都有必要的字段
-                for pref in updated_preferences:
-                    if "preference_type" not in pref:
-                        pref["preference_type"] = "unknown"
-                    if "preference_value" not in pref:
-                        pref["preference_value"] = "未知"
-                    if "confidence_score" not in pref:
-                        pref["confidence_score"] = 0.5
-                
-                # 合并新旧偏好，保留最新和置信度最高的
-                merged_preferences = self._merge_preferences(current_memory_bank, updated_preferences)
-                
-                return merged_preferences
-            except Exception as e:
-                print(f"提取偏好时出错: {str(e)}")
-                # 遇到错误时返回一个空列表，而不是保持现有的记忆库
-                return []
+            return merged_memory_bank
         except Exception as e:
-            print(f"分析对话时出错: {str(e)}")
-            return []
+            # If parsing fails, return current memory bank with error note
+            current_memory_bank["error"] = f"Failed to update preferences: {str(e)}"
+            return current_memory_bank
     
-    def _merge_preferences(self, current_prefs: List[Dict[str, Any]], new_prefs: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        """
-        合并新旧偏好，处理冲突
+    def get_memory_bank(self, user_id: str) -> Dict[str, Any]:
+        """Get current memory bank from user's memory_bank.csv file"""
+        user_dir = self._get_user_dir(user_id)
+        memory_bank_file = os.path.join(user_dir, "memory_bank.csv")
         
-        参数:
-            current_prefs: 当前偏好列表
-            new_prefs: 新提取的偏好列表
-            
-        返回:
-            合并后的偏好列表
-        """
-        # 创建一个字典，键为(偏好类型, 偏好值)对
-        merged_dict = {}
+        if not os.path.exists(memory_bank_file):
+            # Return empty memory bank
+            return {
+                "preferences": {
+                    "frequent_destinations": {},
+                    "preferred_airlines": {},
+                    "cabin_class": {},
+                    "typical_trip_duration": [],
+                    "budget_preference": "medium",
+                    "activity_interests": [],
+                    "accommodation_preferences": []
+                }
+            }
         
-        # 添加当前偏好
-        for pref in current_prefs:
-            if "preference_type" not in pref or "preference_value" not in pref:
-                continue
-                
-            key = (pref.get('preference_type'), pref.get('preference_value'))
-            merged_dict[key] = pref
-        
-        # 添加或覆盖新偏好
-        for pref in new_prefs:
-            if "preference_type" not in pref or "preference_value" not in pref:
-                continue
-                
-            key = (pref.get('preference_type'), pref.get('preference_value'))
-            
-            # 如果是新偏好或置信度更高，则替换
-            if key not in merged_dict or pref.get('confidence_score', 0) > merged_dict[key].get('confidence_score', 0):
-                merged_dict[key] = pref
-        
-        # 转换回列表
-        return list(merged_dict.values())
-    
-    def save_to_csv(self, preferences: List[Dict[str, Any]], csv_path: str) -> bool:
-        """
-        将分析的偏好保存到CSV文件
-        
-        参数:
-            preferences: 偏好列表
-            csv_path: CSV文件路径
-            
-        返回:
-            是否成功保存
-        """
         try:
-            if not preferences:
-                return True  # 如果没有偏好，视为成功
-                
-            df = pd.DataFrame(preferences)
-            # 如果文件不存在，创建新文件并写入表头
-            if not os.path.exists(csv_path):
-                df.to_csv(csv_path, index=False)
+            # Read CSV file
+            df = pd.read_csv(memory_bank_file)
+            if df.empty:
+                return {"preferences": {}}
+            
+            # Get latest entry
+            latest_entry = df.iloc[-1].to_dict()
+            
+            # Reconstruct preferences from flattened structure
+            preferences = {
+                "frequent_destinations": {},
+                "preferred_airlines": {},
+                "cabin_class": {},
+                "typical_trip_duration": [],
+                "budget_preference": "medium",
+                "activity_interests": [],
+                "accommodation_preferences": []
+            }
+            
+            # Parse columns back into structured data
+            for key, value in latest_entry.items():
+                if key.startswith("frequent_destinations_"):
+                    dest = key.replace("frequent_destinations_", "")
+                    preferences["frequent_destinations"][dest] = value
+                elif key.startswith("preferred_airlines_"):
+                    airline = key.replace("preferred_airlines_", "")
+                    preferences["preferred_airlines"][airline] = value
+                elif key.startswith("cabin_class_"):
+                    cabin = key.replace("cabin_class_", "")
+                    preferences["cabin_class"][cabin] = value
+                elif key == "typical_trip_duration":
+                    try:
+                        preferences["typical_trip_duration"] = json.loads(value)
+                    except:
+                        preferences["typical_trip_duration"] = []
+                elif key == "budget_preference":
+                    preferences["budget_preference"] = value
+                elif key == "activity_interests":
+                    try:
+                        preferences["activity_interests"] = json.loads(value)
+                    except:
+                        preferences["activity_interests"] = []
+                elif key == "accommodation_preferences":
+                    try:
+                        preferences["accommodation_preferences"] = json.loads(value)
+                    except:
+                        preferences["accommodation_preferences"] = []
+            
+            return {"preferences": preferences}
+        except Exception as e:
+            print(f"Error reading memory bank: {str(e)}")
+            return {"preferences": {}}
+    
+    def save_memory_bank(self, user_id: str, memory_bank: Dict[str, Any]) -> str:
+        """Save memory bank to memory_bank.csv file"""
+        user_dir = self._get_user_dir(user_id)
+        filename = os.path.join(user_dir, "memory_bank.csv")
+        
+        # Current timestamp
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+        # Format preferences for CSV storage
+        preference_data = {
+            "timestamp": timestamp,
+            "user_id": user_id
+        }
+        
+        # Get preferences
+        preferences = memory_bank.get("preferences", {})
+        
+        # Flatten preferences for CSV storage
+        for category, values in preferences.items():
+            if isinstance(values, dict):
+                for key, value in values.items():
+                    preference_data[f"{category}_{key}"] = value
+            elif isinstance(values, list):
+                preference_data[category] = json.dumps(values)
             else:
-                # 如果文件存在，追加数据不带表头
-                df.to_csv(csv_path, mode='a', header=False, index=False)
-            return True
-        except Exception as e:
-            print(f"保存偏好到CSV时出错: {str(e)}")
-            return False
-    
-    def load_from_csv(self, csv_path: str) -> List[Dict[str, Any]]:
-        """
-        从CSV文件加载偏好
+                preference_data[category] = values
         
-        参数:
-            csv_path: CSV文件路径
-            
-        返回:
-            加载的偏好列表
-        """
-        try:
-            if os.path.exists(csv_path):
-                df = pd.read_csv(csv_path)
-                return df.to_dict('records')
-            return []
-        except Exception as e:
-            print(f"从CSV加载偏好时出错: {str(e)}")
-            return [] 
+        # Check if file exists
+        if os.path.exists(filename):
+            # Read existing data
+            existing_df = pd.read_csv(filename)
+            # Append new data
+            updated_df = pd.concat([existing_df, pd.DataFrame([preference_data])], ignore_index=True)
+            updated_df.to_csv(filename, index=False)
+        else:
+            # Create new file
+            pd.DataFrame([preference_data]).to_csv(filename, index=False)
+        
+        return filename 
