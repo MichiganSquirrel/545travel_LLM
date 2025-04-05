@@ -332,11 +332,11 @@ def format_datetime_short(datetime_str):
         return datetime_str
 
 def main():
-    
+
     st.title("Flight Query Form ✈️")
     st.write("Fill in your flight details to receive personalized flight recommendations.")
     user_no = st.number_input("Please enter your user number:", min_value=0, step=1)
-
+    
     # Check if there's session state
     if 'flight_options' not in st.session_state:
         st.session_state.flight_options = None
@@ -346,7 +346,7 @@ def main():
     
     if 'selected_flight' not in st.session_state:
         st.session_state.selected_flight = None
-        
+    
     # Store user ID in session state
     st.session_state.user_id = user_no
 
@@ -755,11 +755,110 @@ def save_user_preferences(user_id, preferences, user_query, selected_flight):
         st.sidebar.error(f"Stack trace: {traceback.format_exc()}")
         return False
 
+def chatbot():
+    st.set_page_config(page_title="Travel Planner", layout="wide")
+        # Session state setup
+    if 'chat_history' not in st.session_state:
+        st.session_state.chat_history = []
+
+    if 'latest_itinerary' not in st.session_state:
+        st.session_state.latest_itinerary = None
+    
+    # Layout with columns
+    left_col, right_col = st.columns([3, 2], gap="large")
+
+    # Left panel: Display the latest itinerary
+    with left_col:
+        st.markdown("### 📋 Generated Travel Itinerary (Markdown)")
+        if st.session_state.latest_itinerary:
+            st.markdown(st.session_state.latest_itinerary)
+        else:
+            st.markdown("Your generated itinerary will appear here.")
+
+    # Right panel: Chat interface
+    with right_col:
+        
+        st.markdown("### 🤖 Travel Planner Chatbot")
+
+        # Display chat history
+        for msg in st.session_state.chat_history:
+            with st.chat_message(msg["role"]):
+                st.markdown(msg["content"])
+
+        # User input
+        user_input = st.chat_input("Describe your trip, and I'll generate a Markdown itinerary")
+
+        if user_input:
+            # Append user message to chat history
+            st.session_state.chat_history.append({"role": "user", "content": user_input})
+
+            # Construct prompt for LLM
+            full_prompt = f"{user_input}\n\n"
+            print(full_prompt)
+
+            full_prompt += """You are an expert in making travel plans. Consider the user's selected flights and preferences, 
+            please generate a detailed travel itinerary in **Markdown format** considering the flights, using the following structure and formatting:
+    ---
+
+    # 🧳 Trip Itinerary: [Trip Title]
+
+    ## Day X - [Theme or Highlight of the Day]
+    **Estimated Cost:** ~$XXX USD  
+    **Overview:** One-line summary of the day (e.g., "Explore historic Lisbon and enjoy local cuisine")
+
+    ### 🗓 Schedule
+    - ⏰ **08:00** - [Breakfast at ...] *(~$10 USD)*
+    - 🏛 **10:00** - [Visit ...] *(~$15 entrance fee)*
+    - 🍽 **13:00** - [Lunch at ...] *(~$20)*
+    - 🚶 **15:00** - [Activity ...] *(free)*
+    - 🍷 **18:00** - [Dinner/Drinks at ...] *(~$25)*
+
+    ### 💡 Suggestions
+    - [✓ Short travel tip, e.g., "Buy tickets in advance to skip lines"]
+    - [✓ Navigation help, e.g., "Use Tram 28 for a scenic route"]
+    - [✓ Food tip, e.g., "Try the grilled sardines at Mercado da Ribeira"]
+
+    ---
+
+    Use:
+    - **Markdown format only**
+    - Clear headers
+    - Bullet points for tips
+    - Use emojis where appropriate
+
+    Do not include JSON or code blocks. Do not explain the itinerary. Just output it directly."""
+
+            if st.session_state.latest_itinerary:
+                full_prompt += f"Previous itinerary:\n{st.session_state.latest_itinerary}\n\n"
+            if st.session_state.selected_flight:
+                full_prompt += f"Here is the flight that the user selected:\n{st.session_state.selected_flight}\n\n"
+            if st.session_state.preferences:
+                full_prompt += f"Here are the preferences that the user selected:\n{st.session_state.preferences}\n\n"
+            print(full_prompt)
+
+            # Display spinner while generating response
+            with st.spinner("Generating itinerary..."):
+                # Generate itinerary using LLM API
+                response = llm_api.generate_text(prompt=full_prompt, temperature=0.6, max_tokens=3000)
+                content = response.get("choices", [{}])[0].get("message", {}).get("content", "")
+
+            if content:
+                # Update the latest itinerary in session state
+                st.session_state.latest_itinerary = content
+                # Append confirmation message to chat history
+                st.session_state.chat_history.append({"role": "assistant", "content": "✅ Your itinerary has been generated and displayed in the left panel."})
+            else:
+                # Append error message to chat history
+                st.session_state.chat_history.append({"role": "assistant", "content": "⚠️ No itinerary was generated. Please try again."})
+            st.rerun()
+
+
+
 def display_flight_selection(flights, user_query):
     """Display flight selection and handle user choice"""
     st.write("---")
     st.subheader("Choose Your Preferred Flight")
-    st.session_state.selected_flight = None
+    st.session_state.selected_flight= None
     # Create selection widgets with index information
     flight_options = []
     for i, flight in enumerate(flights):
@@ -865,6 +964,7 @@ def display_flight_selection(flights, user_query):
     st.write("---")
     st.subheader("Tell Us About Your Travel Preferences")
     preferences = collect_user_preferences()
+    st.session_state.preferences = preferences
     
     # 使用收集到的旅行偏好，添加到现有的航班信息中
     if preferences and "travel_preferences" in preferences:
@@ -925,46 +1025,10 @@ def display_flight_selection(flights, user_query):
             st.sidebar.error(f"Error processing travel preferences: {str(e)}")
         
         # Use a different key for this button
-        if st.button("Generate Detailed Travel Plan", key="gen_plan_button"):
-            st.info("Generating your travel plan, this may take a few minutes...")
-            # Here we should call AI to generate detailed travel plan
-            # Simulate progress bar
-            progress_bar = st.progress(0)
-            for percent_complete in range(100):
-                time.sleep(0.05)
-                progress_bar.progress(percent_complete + 1)
-            
-            st.success("Travel plan generated!")
-            # Example travel plan content
-            st.markdown("""
-            ## Your Personalized Travel Plan
-            
-            ### Day 1
-            - Morning: Arrive at destination, check-in to hotel
-            - Afternoon: Visit main attractions
-            - Evening: Enjoy local cuisine
-            
-            ### Day 2
-            - Morning: Cultural experience activities
-            - Afternoon: Shopping and free time
-            - Evening: Local performance or entertainment
-            
-            ### Day 3
-            - Morning: Day trip to nearby attractions
-            - Evening: Return and rest
-            
-            ### Day 4
-            - Morning: Prepare for return journey
-            - Afternoon: Departure flight
-            """)
-            
-            # Visualize recommended itinerary
-            st.subheader("Budget Allocation")
-            chart_data = pd.DataFrame({
-                "Category": ["Transportation", "Accommodation", "Food", "Attractions", "Shopping"],
-                "Budget Allocation": [30, 35, 15, 10, 10]
-            })
-            st.bar_chart(chart_data.set_index("Category"))
+    if st.button("Generate Detailed Travel Plan", key="gen_plan_button"):
+        st.info("Generating your travel plan, this may take a few minutes...")
+        #cbot = st.Page(chatbot, title="Travel Plan Chatbot", icon="🤖")
+        st.switch_page("pages/chatbot.py")
 
 
 def save_user_selection(user_query, selected_flight, all_flights, user_feedback):
@@ -989,9 +1053,13 @@ def save_user_selection(user_query, selected_flight, all_flights, user_feedback)
         # Create database manager
         db_manager = DatabaseManager()
         
+        print(selected_flight)
         # Let database manager handle flight data filtering and saving
-        temp_file = db_manager.save_temp_data(user_query, selected_flight, all_flights)
+        temp_file, tempdata = db_manager.save_temp_data(user_query, selected_flight, all_flights)
         
+        if 'tempdata' not in st.session_state:
+            st.session_state.tempdata = tempdata
+
         # Verify the temp file was created successfully
         if not temp_file or not os.path.exists(temp_file):
             st.sidebar.error(f"Failed to create temp file: {temp_file}")
