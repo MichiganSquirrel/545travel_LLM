@@ -2,14 +2,24 @@ import streamlit as st
 from api.llm_api import LLMApi  # Replace with your actual module
 from config import load_api_keys
 
+
+
+# Divider and section title
+
+st.set_page_config(
+        page_title="Travel Chatbot",
+        page_icon="🤖",
+        initial_sidebar_state='collapsed',
+
+    )
+st.title("EECS 545 Travel Planner 🌏")
+st.logo("images/TravelPlanner_Logo.png", icon_image="images/TravelPlanner_Logo.png")
+
 # Load API keys
 load_api_keys()
 
 # Initialize LLM API
 llm_api = LLMApi()
-
-# Set full-width layout
-st.set_page_config(page_title="Travel Planner", layout="wide")
 
 # Session state setup
 if 'chat_history' not in st.session_state:
@@ -40,9 +50,10 @@ with right_col:
     for msg in st.session_state.chat_history:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
-
+    #print(st.session_state.tempdata)
+    #print(st.session_state.firstround)
     # User input
-    if 'selected_flight' not in st.session_state or not st.session_state.firstround:
+    if ('tempdata' not in st.session_state) or (st.session_state.firstround==False):
         user_input = st.chat_input("Describe your trip here!")
     else:
         user_input = "Please generate a detailed travel plan with regard to my flight destination\n"

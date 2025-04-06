@@ -273,36 +273,42 @@ Flight Information:
 
         # Add instructions for the response format
         prompt += """
-Please analyze the above flight data and provide the following:
+        Please analyze the flight data above and provide the following in your response:
 
-## Flight Options Analysis
+        ## ✈️ Flight Analysis and Recommendations
 
-Create a markdown table comparing the flight options with these columns:
-- Option
-- Airline
-- Duration (Outbound/Return)
-- Total Price
-- Baggage Allowance
-- Stops
-- Fare Type
-- Advantage
+        First, present a comparison of all flight options using a markdown table with these columns:
 
-Example table format:
-| Option | Airline | Duration (Outbound/Return) | Total Price | Baggage Allowance | Stops | Fare Type | Advantage |
-|--------|---------|----------------------------|-------------|-------------------|-------|-----------|-----------|
-| 1 | Airline Name | XXh / XXh | Price | Baggage | Stops | Fare Type | Key advantage |
+        - Option
+        - Airline
+        - Duration (Outbound / Return)
+        - Total Price
+        - Baggage Allowance
+        - Stops (Outbound / Return) — use format like `1/1`, `0/1`, etc.
+        - Fare Type
+        - ✨ Advantage (highlight a key benefit, feel free to use emojis)
 
-For each flight option, provide a concise advantage or key characteristic in the Advantage column.
+        ### 📝 Example Table Format:
+        | Option | Airline | Duration (Outbound / Return) | Total Price | Baggage Allowance | Stops (Out/Return) | Fare Type | ✨ Advantage |
+        |--------|---------|-------------------------------|-------------|-------------------|---------------------|-----------|--------------|
+        | 1      | Airline Name | 8h 30m / 9h 10m           | $550        | Included / Included | 1/1              | Economy   | 💰 Great value |
 
-After the table, please provide a brief analysis of each option, highlighting which might be best for different traveler needs (best value, fastest, most convenient, etc.)
+        Then, write a short paragraph discussing the pros and cons of each option. Mention which flight is best suited for:
+        - 💸 Travelers on a budget
+        - 🏃‍♂️ Those who want the fastest option
+        - 😌 People looking for the most convenient experience (e.g., direct flights, short layovers)
 
-IMPORTANT INSTRUCTIONS:
-1. DO NOT format your response as JSON
-2. DO NOT include hotel, restaurant, or attraction recommendations
-3. DO NOT create a travel itinerary
-4. ONLY analyze the flight options based on the actual data provided
-5. Use markdown tables and text only
-"""
+        ---
+
+        ### 📌 Important Guidelines:
+        1. **DO NOT** label your response with "Step 1", "Step 2", or similar headers.
+        2. **DO NOT** format your response as JSON.
+        3. **DO NOT** include hotel, restaurant, or attraction recommendations.
+        4. **DO NOT** create a travel itinerary.
+        5. ✅ ONLY analyze the flight options based on the actual data provided.
+        6. ✅ Use markdown tables and plain text (emojis are encouraged 😊).
+        """
+
         return prompt
 
     def analyze_user_preferences(self, conversation_history: List[Dict[str, str]]) -> Dict[str, Any]:
@@ -351,168 +357,168 @@ Format your response as a JSON object with these categories.
             return {"error": f"Failed to analyze preferences: {str(e)}"}
 
 
-class AnthropicAPI:
-    """API client for interacting with Anthropic Claude models"""
+# class AnthropicAPI:
+#     """API client for interacting with Anthropic Claude models"""
     
-    def __init__(self, api_key: Optional[str] = None, model: str = "claude-3-opus-20240229"):
-        """
-        Initialize the Anthropic API client
+#     def __init__(self, api_key: Optional[str] = None, model: str = "claude-3-opus-20240229"):
+#         """
+#         Initialize the Anthropic API client
         
-        Args:
-            api_key: API key for Anthropic (defaults to environment variable)
-            model: Model name to use (default: claude-3-opus-20240229)
-        """
-        self.api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
-        if not self.api_key:
-            raise ValueError("API key must be provided or set as ANTHROPIC_API_KEY environment variable")
+#         Args:
+#             api_key: API key for Anthropic (defaults to environment variable)
+#             model: Model name to use (default: claude-3-opus-20240229)
+#         """
+#         self.api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
+#         if not self.api_key:
+#             raise ValueError("API key must be provided or set as ANTHROPIC_API_KEY environment variable")
         
-        self.model = model
-        self.base_url = "https://api.anthropic.com/v1/messages"
-        self.headers = {
-            "x-api-key": self.api_key,
-            "anthropic-version": "2023-06-01",
-            "content-type": "application/json"
-        }
+#         self.model = model
+#         self.base_url = "https://api.anthropic.com/v1/messages"
+#         self.headers = {
+#             "x-api-key": self.api_key,
+#             "anthropic-version": "2023-06-01",
+#             "content-type": "application/json"
+#         }
     
-    def generate_text(self, prompt: str, max_tokens: int = 1000, temperature: float = 0.7) -> Dict[str, Any]:
-        """
-        Generate text using Claude
+#     def generate_text(self, prompt: str, max_tokens: int = 1000, temperature: float = 0.7) -> Dict[str, Any]:
+#         """
+#         Generate text using Claude
         
-        Args:
-            prompt: The prompt to send to the model
-            max_tokens: Maximum number of tokens to generate
-            temperature: Controls randomness (0.0-1.0)
+#         Args:
+#             prompt: The prompt to send to the model
+#             max_tokens: Maximum number of tokens to generate
+#             temperature: Controls randomness (0.0-1.0)
             
-        Returns:
-            Dictionary containing the model's response
-        """
-        payload = {
-            "model": self.model,
-            "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": max_tokens,
-            "temperature": temperature
-        }
+#         Returns:
+#             Dictionary containing the model's response
+#         """
+#         payload = {
+#             "model": self.model,
+#             "messages": [{"role": "user", "content": prompt}],
+#             "max_tokens": max_tokens,
+#             "temperature": temperature
+#         }
         
-        try:
-            response = requests.post(self.base_url, headers=self.headers, json=payload)
-            response.raise_for_status()
-            return response.json()
-        except requests.exceptions.RequestException as e:
-            return {"error": str(e)}
+#         try:
+#             response = requests.post(self.base_url, headers=self.headers, json=payload)
+#             response.raise_for_status()
+#             return response.json()
+#         except requests.exceptions.RequestException as e:
+#             return {"error": str(e)}
     
-    def process_travel_query(self, user_query: Dict[str, Any], 
-                            flight_data: Dict[str, Any],
-                            hotel_data: Optional[Dict[str, Any]] = None,
-                            restaurant_data: Optional[Dict[str, Any]] = None,
-                            attraction_data: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-        """
-        Process a travel query using Claude
+#     def process_travel_query(self, user_query: Dict[str, Any], 
+#                             flight_data: Dict[str, Any],
+#                             hotel_data: Optional[Dict[str, Any]] = None,
+#                             restaurant_data: Optional[Dict[str, Any]] = None,
+#                             attraction_data: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+#         """
+#         Process a travel query using Claude
         
-        Args:
-            user_query: User's travel query details
-            flight_data: Flight information from flight API
-            hotel_data: Hotel information (optional)
-            restaurant_data: Restaurant information (optional)
-            attraction_data: Attraction information (optional)
+#         Args:
+#             user_query: User's travel query details
+#             flight_data: Flight information from flight API
+#             hotel_data: Hotel information (optional)
+#             restaurant_data: Restaurant information (optional)
+#             attraction_data: Attraction information (optional)
             
-        Returns:
-            Dictionary containing travel recommendations
-        """
-        # Construct the prompt with all available data
-        prompt = self._construct_travel_prompt(
-            user_query, 
-            flight_data, 
-            hotel_data, 
-            restaurant_data, 
-            attraction_data
-        )
+#         Returns:
+#             Dictionary containing travel recommendations
+#         """
+#         # Construct the prompt with all available data
+#         prompt = self._construct_travel_prompt(
+#             user_query, 
+#             flight_data, 
+#             hotel_data, 
+#             restaurant_data, 
+#             attraction_data
+#         )
         
-        # Generate recommendations
-        response = self.generate_text(prompt, max_tokens=4000, temperature=0.5)
+#         # Generate recommendations
+#         response = self.generate_text(prompt, max_tokens=4000, temperature=0.5)
         
-        # Extract and parse the response
-        try:
-            content = response.get("content", [{}])[0].get("text", "")
-            # Try to parse as JSON if possible
-            try:
-                return json.loads(content)
-            except json.JSONDecodeError:
-                # If not valid JSON, return as text
-                return {"recommendations": content}
-        except Exception as e:
-            return {"error": f"Failed to process Claude response: {str(e)}"}
+#         # Extract and parse the response
+#         try:
+#             content = response.get("content", [{}])[0].get("text", "")
+#             # Try to parse as JSON if possible
+#             try:
+#                 return json.loads(content)
+#             except json.JSONDecodeError:
+#                 # If not valid JSON, return as text
+#                 return {"recommendations": content}
+#         except Exception as e:
+#             return {"error": f"Failed to process Claude response: {str(e)}"}
     
-    def _construct_travel_prompt(self, 
-                               user_query: Dict[str, Any],
-                               flight_data: Dict[str, Any],
-                               hotel_data: Optional[Dict[str, Any]] = None,
-                               restaurant_data: Optional[Dict[str, Any]] = None,
-                               attraction_data: Optional[Dict[str, Any]] = None) -> str:
-        """
-        Construct a prompt for travel recommendations
+#     def _construct_travel_prompt(self, 
+#                                user_query: Dict[str, Any],
+#                                flight_data: Dict[str, Any],
+#                                hotel_data: Optional[Dict[str, Any]] = None,
+#                                restaurant_data: Optional[Dict[str, Any]] = None,
+#                                attraction_data: Optional[Dict[str, Any]] = None) -> str:
+#         """
+#         Construct a prompt for travel recommendations
         
-        Args:
-            user_query: User's travel query details
-            flight_data: Flight information
-            hotel_data: Hotel information (optional)
-            restaurant_data: Restaurant information (optional)
-            attraction_data: Attraction information (optional)
+#         Args:
+#             user_query: User's travel query details
+#             flight_data: Flight information
+#             hotel_data: Hotel information (optional)
+#             restaurant_data: Restaurant information (optional)
+#             attraction_data: Attraction information (optional)
             
-        Returns:
-            Formatted prompt string
-        """
-        # Basic user query information
-        prompt = f"""You are an expert travel planner. Create a detailed travel plan based on the following information:
+#         Returns:
+#             Formatted prompt string
+#         """
+#         # Basic user query information
+#         prompt = f"""You are an expert travel planner. Create a detailed travel plan based on the following information:
 
-USER QUERY:
-- Origin: {user_query.get('origin', 'Not specified')}
-- Destination: {user_query.get('destination', 'Not specified')}
-- Departure Date: {user_query.get('departure_date', 'Not specified')}
-- Return Date: {user_query.get('return_date', 'Not specified')}
-- Budget: {user_query.get('budget', 'Not specified')}
-- Interests: {', '.join(user_query.get('interests', ['Not specified']))}
+# USER QUERY:
+# - Origin: {user_query.get('origin', 'Not specified')}
+# - Destination: {user_query.get('destination', 'Not specified')}
+# - Departure Date: {user_query.get('departure_date', 'Not specified')}
+# - Return Date: {user_query.get('return_date', 'Not specified')}
+# - Budget: {user_query.get('budget', 'Not specified')}
+# - Interests: {', '.join(user_query.get('interests', ['Not specified']))}
 
-FLIGHT INFORMATION:
-{json.dumps(flight_data, indent=2)}
-"""
+# FLIGHT INFORMATION:
+# {json.dumps(flight_data, indent=2)}
+# """
 
-        # Add hotel information if available
-        if hotel_data:
-            prompt += f"""
-HOTEL OPTIONS:
-{json.dumps(hotel_data, indent=2)}
-"""
+#         # Add hotel information if available
+#         if hotel_data:
+#             prompt += f"""
+# HOTEL OPTIONS:
+# {json.dumps(hotel_data, indent=2)}
+# """
 
-        # Add restaurant information if available
-        if restaurant_data:
-            prompt += f"""
-RESTAURANT OPTIONS:
-{json.dumps(restaurant_data, indent=2)}
-"""
+#         # Add restaurant information if available
+#         if restaurant_data:
+#             prompt += f"""
+# RESTAURANT OPTIONS:
+# {json.dumps(restaurant_data, indent=2)}
+# """
 
-        # Add attraction information if available
-        if attraction_data:
-            prompt += f"""
-ATTRACTION OPTIONS:
-{json.dumps(attraction_data, indent=2)}
-"""
+#         # Add attraction information if available
+#         if attraction_data:
+#             prompt += f"""
+# ATTRACTION OPTIONS:
+# {json.dumps(attraction_data, indent=2)}
+# """
 
-        # Add instructions for the response format
-        prompt += """
-Based on the above information, please provide:
-1. A summary of the best flight options
-2. Recommended accommodations
-3. Suggested activities and attractions based on the user's interests
-4. Dining recommendations
-5. A day-by-day itinerary
+#         # Add instructions for the response format
+#         prompt += """
+# Based on the above information, please provide:
+# 1. A summary of the best flight options
+# 2. Recommended accommodations
+# 3. Suggested activities and attractions based on the user's interests
+# 4. Dining recommendations
+# 5. A day-by-day itinerary
 
-Format your response as a JSON object with the following structure:
-{
-  "flight_recommendations": [...],
-  "hotel_recommendations": [...],
-  "activity_recommendations": [...],
-  "dining_recommendations": [...],
-  "itinerary": [...]
-}
-"""
-        return prompt 
+# Format your response as a JSON object with the following structure:
+# {
+#   "flight_recommendations": [...],
+#   "hotel_recommendations": [...],
+#   "activity_recommendations": [...],
+#   "dining_recommendations": [...],
+#   "itinerary": [...]
+# }
+# """
+#         return prompt 
