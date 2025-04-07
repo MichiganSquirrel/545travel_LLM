@@ -10,7 +10,7 @@ st.set_page_config(
         page_title="Travel Chatbot",
         page_icon="🤖",
         initial_sidebar_state='collapsed',
-
+        layout="wide"
     )
 st.title("EECS 545 Travel Planner 🌏")
 st.logo("images/TravelPlanner_Logo.png", icon_image="images/TravelPlanner_Logo.png")
@@ -20,6 +20,8 @@ load_api_keys()
 
 # Initialize LLM API
 llm_api = LLMApi()
+
+print(st.session_state)
 
 # Session state setup
 if 'chat_history' not in st.session_state:
@@ -57,6 +59,11 @@ with right_col:
         user_input = st.chat_input("Describe your trip here!")
     else:
         user_input = "Please generate a detailed travel plan with regard to my flight destination\n"
+    if st.button("Reset", type="primary"):
+        st.session_state.latest_itinerary = None
+        st.session_state.firstround = True
+        st.session_state.chat_history = []
+        st.rerun()
 
     if user_input:
         # Append user message to chat history
@@ -99,10 +106,11 @@ Do not include JSON or code blocks. Do not explain the itinerary. Just output it
 
         if st.session_state.latest_itinerary:
             full_prompt += f"Previous itinerary:\n{st.session_state.latest_itinerary}\n\n"
+        #print(st.session_state.selected_flight['itineraries'])
         if 'tempdata' not in st.session_state:
             st.session_state.tempdata = None
         if st.session_state.tempdata:
-            full_prompt += f"Here is the flight that the user selected, mention the last flight segment in the itinerary:\n{st.session_state.tempdata}\n\n"
+            full_prompt += f"Here is the flight that the user selected, mention the relevant flight segment in the itinerary:\n{st.session_state.tempdata}\n\n"
         if 'preferences' not in st.session_state:
             st.session_state.preferences = None
         if st.session_state.preferences:

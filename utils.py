@@ -2,6 +2,7 @@ import datetime
 import pandas as pd
 import json
 import os
+import re
 
 def fix_existing_temp_file(user_id):
     """
@@ -44,6 +45,112 @@ def fix_existing_temp_file(user_id):
     except Exception as e:
         # Handle any errors during path resolution or outer logic
         raise Exception(f"Error in fix_existing_temp_file: {str(e)}")
+
+def save_user_selection(user_query, selected_flight, all_flights, user_feedback):
+    """
+    Save user's selected flight and preferences to a temporary file and recommendation database.
+    Returns a result dictionary with status and any relevant messages.
+    """
+    import os
+    import json
+    import traceback
+    import pandas as pd
+    from database.db_manager import DatabaseManager
+
+    result = {
+        "status": False,
+        "messages": [],
+        "temp_file": None,
+        "recommend_file": None,
+        "user_id": None,
+        "error": None,
+        "traceback": None
+    }
+
+    try:
+        # Determine user_id
+        user_id = user_query.get("user_id") or "unknown"
+        user_query["user_id"] = user_id
+        result["user_id"] = user_id
+
+        # Fix or initialize the temp file
+        fix_existing_temp_file(user_id)
+
+        # Initialize database manager and save temp data
+        db_manager = DatabaseManager()
+        temp_file, tempdata = db_manager.save_temp_data(user_query, selected_flight, all_flights)
+        result["temp_file"] = temp_file
+
+        # Verify temp file exists
+        if not temp_file or not os.path.exists(temp_file):
+            result["messages"].append(f"Failed to create temp file: {temp_file}")
+            return result, tempdata
+
+        # Ensure the temp file has a 'user_preferences' column
+        try:
+            df = pd.read_csv(temp_file)
+            if "user_preferences" not in df.columns:
+                df["user_preferences"] = json.dumps({})
+                df.to_csv(temp_file, index=False)
+                result["messages"].append("'user_preferences' column added to temp.csv")
+        except Exception as e:
+            result["messages"].append(f"Error updating temp.csv: {str(e)}")
+
+        # Create travel plan using selected flight info
+        if selected_flight:
+            essential_flight_info = {
+                "flight_index": all_flights.index(selected_flight),
+                "price": selected_flight.get("price", {}).get("total", "N/A"),
+                "currency": selected_flight.get("price", {}).get("currency", "USD"),
+                "cabin": selected_flight.get("travelerPricings", [{}])[0]
+                    .get("fareDetailsBySegment", [{}])[0].get("cabin", "N/A"),
+                "baggage": selected_flight.get("travelerPricings", [{}])[0]
+                    .get("fareDetailsBySegment", [{}])[0]
+                    .get("includedCheckedBags", {}).get("quantity", 0),
+                "segments": []
+            }
+
+            for itinerary in selected_flight.get("itineraries", []):
+                for segment in itinerary.get("segments", []):
+                    essential_flight_info["segments"].append({
+                        "carrier": segment.get("carrierCode", "N/A"),
+                        "flight_number": segment.get("number", "N/A"),
+                        "departure": {
+                            "airport": segment.get("departure", {}).get("iataCode", "N/A"),
+                            "time": segment.get("departure", {}).get("at", "N/A")
+                        },
+                        "arrival": {
+                            "airport": segment.get("arrival", {}).get("iataCode", "N/A"),
+                            "time": segment.get("arrival", {}).get("at", "N/A")
+                        }
+                    })
+
+            travel_plan = {
+                "destination": user_query.get("destination", ""),
+                "departure_date": user_query.get("departure_date", ""),
+                "return_date": user_query.get("return_date", ""),
+                "flight": essential_flight_info,
+                "detailed_plan": {
+                    "activities": ["Visit attractions", "Try local food", "Shopping"],
+                    "accommodation": "Comfortable hotel",
+                    "transportation": "Taxi and public transit"
+                }
+            }
+
+            recommend_file = db_manager.save_recommendation(user_id, travel_plan, user_feedback)
+            result["recommend_file"] = recommend_file
+            result["messages"].append("Travel plan saved to recommendation database.")
+
+        result["status"] = True
+        result["messages"].append("Session data saved successfully.")
+        return result, tempdata
+
+    except Exception as e:
+        result["error"] = str(e)
+        result["traceback"] = traceback.format_exc()
+        result["messages"].append(f"Error saving session data: {str(e)}")
+        return result, None
+
 
 
 def load_airport_data():
@@ -227,3 +334,16 @@ Please see the detailed information for each flight option below.
         analysis += "---\n"
     
     return analysis    
+
+def format_duration(iso_duration):
+    match = re.match(r'PT(?:(\d+)H)?(?:(\d+)M)?', iso_duration)
+    hours = int(match.group(1)) if match.group(1) else 0
+    minutes = int(match.group(2)) if match.group(2) else 0
+    return f"{hours}h {minutes}m"
+
+def format_time(dt_str):
+    try:
+        dt = datetime.fromisoformat(dt_str)
+        return dt.strftime('%b %d, %Y at %I:%M %p')
+    except:
+        return dt_str  # fallback in case format is unexpected

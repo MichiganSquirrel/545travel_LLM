@@ -1,7 +1,7 @@
 import streamlit as st
 import sys
 sys.path.append("..")
-from utils import load_airport_data, get_airport_code, fix_existing_temp_file
+from utils import load_airport_data, get_airport_code, fix_existing_temp_file, save_user_selection, format_duration, format_time
 from api.flight_api import AmadeusAPI
 from api.llm_api import LLMApi
 import datetime
@@ -80,12 +80,9 @@ else:
     if 'selected_flight' not in st.session_state:
         st.session_state.selected_flight = None
 
-    if 'start_location' not in st.session_state:
-        st.session_state.start_location = None
-
-    if 'destination' not in st.session_state:
-        st.session_state.destination = None
-
+    if 'user_query' not in st.session_state:
+        st.session_state.user_query = None
+    
     # Load airport data
     airport_data = load_airport_data()
 
@@ -218,7 +215,7 @@ else:
                     os.makedirs(user_dir, exist_ok=True)
                 
                 # Update temp.csv with user preferences
-                result_file = db_manager.update_temp_with_preferences(user_id, preferences)
+                result_file,initial_data = db_manager.update_temp_with_preferences(user_id, preferences)
                 
                 if result_file and os.path.exists(result_file):
                     st.success("Successfully saved query preferences")
@@ -232,9 +229,10 @@ else:
 
             with st.spinner("Analyzing flight options..."):
                 llm_analysis = process_flights_with_llm(flights, user_query)
+                st.session_state.user_query = user_query
                 st.session_state.flight_analysis = llm_analysis
-                st.write("---")
-                st.markdown(llm_analysis)
+                # st.write("---")
+                # st.markdown(llm_analysis)
                 st.rerun()
         else:
             st.warning("No flights found for the given search criteria.")
@@ -292,13 +290,91 @@ else:
                 format_func=lambda x: flight_options[x]
             )
             # Feedback
-            st.text_area("💬 Any feedback on this flight?", placeholder="Tell us what you think (optional)")
+            feedback = st.text_area("💬 Any feedback on this flight?", placeholder="Tell us what you think (optional)")
             if st.button("Confirm Selection", type="primary"):
                 st.session_state.selected_flight = st.session_state.flight_options[selected_index]
-            #if st.session_state.selected_flight:
+                st.session_state.user_query["selected_flight_index"] = selected_index
+                save_success, tempdata = save_user_selection(st.session_state.user_query, st.session_state.selected_flight, st.session_state.flight_options, feedback)
+                if tempdata:
+                    st.session_state['tempdata'] = tempdata
+                if save_success:
+                    st.success(f"You have selected {flight_options[selected_index]}.\n Your selection has been saved.")
+                    
+                    # Display details
+                    st.subheader("✈️ Your Selected Flight Details")
+
+                    # Check if flight is selected
+                    if st.session_state.selected_flight:
+                        flight = st.session_state.selected_flight
+
+                        # Extract and display price information
+                        price = flight.get('price', {})
+                        total_price = price.get('total', 'N/A')
+                        currency = price.get('currency', 'USD')
+                        st.markdown(f"---\n### 💰 Total Price: `{total_price} {currency}`")
+                        
+                        col1, col2 = st.columns(2)
+                        # Display itinerary details
+                        itineraries = flight.get('itineraries', [])
+                        for i, itinerary in enumerate(itineraries):
+                            journey_type = "🛫 Outbound" if i == 0 else "🛬 Return"
+                            col = col1 if i==0 else col2
+                            with col:
+                                st.markdown(f"### {journey_type}")
+                                # Duration and stops
+                                duration = format_duration(itinerary.get('duration', 'N/A'))
+                                segments = itinerary.get('segments', [])
+                                num_stops = len(segments) - 1
+
+                                st.markdown(f"""
+                                <div style="padding: 10px; border-left: 4px solid #4CAF50; background-color: #f9f9f9;">
+                                    <strong>Duration:</strong> {duration}<br>
+                                    <strong>Stops:</strong> {num_stops}
+                                </div>
+                                """, unsafe_allow_html=True)
+
+                                # Segment details
+                                for seg_num, segment in enumerate(segments, start=1):
+                                    carrier = segment.get('carrierCode', 'N/A')
+                                    flight_number = segment.get('number', 'N/A')
+
+                                    departure = segment.get('departure', {})
+                                    dep_time = format_time(departure.get('at', 'N/A'))
+                                    dep_airport = departure.get('iataCode', 'N/A')
+
+                                    arrival = segment.get('arrival', {})
+                                    arr_time = format_time(arrival.get('at', 'N/A'))
+                                    arr_airport = arrival.get('iataCode', 'N/A')
+
+                                    st.markdown(f"""
+                                    <div style="margin-top: 20px; padding: 16px; border-radius: 12px; border: 1px solid #e0e0e0; box-shadow: 0 2px 5px rgba(0,0,0,0.05); background-color: #ffffff;">
+                                        <h4 style="margin-bottom: 12px; font-size: 20px; color: #333;">✈️ Segment {seg_num}</h4>
+                                        <div style="line-height: 1.8; font-size: 16px; color: #555;">
+                                            <p><strong>Flight:</strong> {carrier} {flight_number}</p>
+                                            <p><strong>Route:</strong> {dep_airport} → {arr_airport}</p>
+                                            <p><strong>Departure:</strong> {dep_time}</p>
+                                            <p><strong>Arrival:</strong> {arr_time}</p>
+                                        </div>
+                                    </div>
+                                    """, unsafe_allow_html=True)
+
+
+
+                        # Display cabin and baggage information
+                        st.markdown("---\n### 🧳 Additional Details")
+                        traveler_pricings = flight.get('travelerPricings', [])
+                        if traveler_pricings:
+                            traveler = traveler_pricings[0]
+                            fare_details = traveler.get('fareDetailsBySegment', [])
+                            if fare_details:
+                                segment_details = fare_details[0]
+                                cabin = segment_details.get('cabin', 'N/A')
+                                baggage_info = segment_details.get('includedCheckedBags', {})
+                                baggage_quantity = baggage_info.get('quantity', 0) if baggage_info else 0
+
+                                st.markdown(f"- **Cabin Class:** `{cabin}`")
+                                st.markdown(f"- **Checked Baggage Allowance:** `{baggage_quantity} piece(s)`")
+
             if st.button("Edit Travel Preferences", type="secondary"):
                 st.switch_page("pages/preferences.py")
-                ###################################
-                ### TO DO: Save Selection Logic ###
-                ###################################
 

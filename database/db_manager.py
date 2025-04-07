@@ -148,7 +148,7 @@ class DatabaseManager:
         df.to_csv(filename, index=False)
         
         logger.info(f"Saved minimal flight data to {filename}")
-        return filename
+        return filename, session_data
     
     def update_temp_with_preferences(self, user_id: str, user_preferences: Dict[str, Any]) -> str:
         """
@@ -206,7 +206,7 @@ class DatabaseManager:
             # Save to CSV
             df.to_csv(filename, index=False)
             logger.info(f"Created new temp file with preferences: {filename}")
-            return filename
+            return filename, initial_data
             
         try:
             # Read existing data
