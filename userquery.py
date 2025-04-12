@@ -21,8 +21,8 @@ load_api_keys()
 
 # Get API credentials from environment variables or set them directly
 # Note: For better security, use environment variables instead of hardcoding
-AMADEUS_API_KEY = os.environ.get("AMADEUS_API_KEY", "wnkJALiAYNo4duZVG88dgfI6H2jtGGG2")
-AMADEUS_API_SECRET = os.environ.get("AMADEUS_API_SECRET", "Q2E3OAO8MRZoBHrj")
+AMADEUS_API_KEY = os.environ.get("AMADEUS_API_KEY", "")
+AMADEUS_API_SECRET = os.environ.get("AMADEUS_API_SECRET", "")
 
 # Initialize LLM API client
 try:
@@ -38,6 +38,11 @@ except ValueError as e:
 
 def get_amadeus_token():
     """Get OAuth2 token from Amadeus API"""
+    # 检查API密钥是否存在
+    if not AMADEUS_API_KEY or not AMADEUS_API_SECRET:
+        st.error("Amadeus API密钥未配置。请在config.py文件中配置AMADEUS_API_KEY和AMADEUS_API_SECRET。")
+        return None
+        
     url = "https://test.api.amadeus.com/v1/security/oauth2/token"
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
     data = {
@@ -1027,7 +1032,44 @@ def display_flight_selection(flights, user_query):
         # Use a different key for this button
     if st.button("Generate Detailed Travel Plan", key="gen_plan_button"):
         st.info("Generating your travel plan, this may take a few minutes...")
-        #cbot = st.Page(chatbot, title="Travel Plan Chatbot", icon="🤖")
+ 
+        # Generate Google Places API call and use response for itinerary
+        from database.db_manager import DatabaseManager
+        db_manager = DatabaseManager()
+        user_id = str(user_query.get("user_id", "unknown"))
+        user_dir = db_manager._get_user_dir(user_id)
+        temp_file_path = os.path.join(user_dir, "temp.csv")
+ 
+        places_result = None
+        try:
+            import pandas as pd
+            import json
+            import requests
+            df = pd.read_csv(temp_file_path)
+            if "user_preferences" in df.columns:
+                user_prefs = json.loads(df["user_preferences"].iloc[0])
+                query_prompt = f"Given the following user preferences, write a simple, concise sentence describing what types of places they might want to visit: {json.dumps(user_prefs)}"
+                response = llm_api.generate_text(prompt=query_prompt, temperature=0.7, max_tokens=100)
+                query_text = response.get("choices", [{}])[0].get("message", {}).get("content", "").strip()
+ 
+                api_payload = {
+                    "textQuery": query_text,
+                    "languageCode": "en"
+                }
+                headers = {
+                    "Content-Type": "application/json",
+                    "X-Goog-Api-Key": os.environ.get("GOOGLE_PLACES_API_KEY", ""),
+                    "X-Goog-FieldMask": "places.id,places.displayName,places.formattedAddress,places.types,places.rating,places.userRatingCount"
+                }
+                r = requests.post("https://places.googleapis.com/v1/places:searchText", headers=headers, json=api_payload)
+                if r.status_code == 200:
+                    places_result = r.json()
+        except Exception as e:
+            st.warning(f"Could not fetch Google Places: {str(e)}")
+ 
+        if places_result:
+            st.session_state.places_result = places_result
+ 
         st.switch_page("pages/chatbot.py")
 
 
@@ -1239,6 +1281,7 @@ def fix_existing_temp_file(user_id):
                 st.sidebar.error(f"Error fixing temp.csv: {str(e)}")
     except Exception as e:
         st.sidebar.error(f"Error in fix_existing_temp_file: {str(e)}")
+
 
 if __name__ == "__main__":
     main()

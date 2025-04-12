@@ -295,8 +295,13 @@ else:
                 st.session_state.selected_flight = st.session_state.flight_options[selected_index]
                 st.session_state.user_query["selected_flight_index"] = selected_index
                 save_success, tempdata = save_user_selection(st.session_state.user_query, st.session_state.selected_flight, st.session_state.flight_options, feedback)
+                
+                # 确保tempdata被正确设置到session state
                 if tempdata:
                     st.session_state['tempdata'] = tempdata
+                    # 记录到控制台以便调试
+                    print(f"Setting tempdata in session_state: {tempdata}")
+                    
                 if save_success:
                     st.success(f"You have selected {flight_options[selected_index]}.\n Your selection has been saved.")
                     
@@ -333,33 +338,6 @@ else:
                                 </div>
                                 """, unsafe_allow_html=True)
 
-                                # Segment details
-                                for seg_num, segment in enumerate(segments, start=1):
-                                    carrier = segment.get('carrierCode', 'N/A')
-                                    flight_number = segment.get('number', 'N/A')
-
-                                    departure = segment.get('departure', {})
-                                    dep_time = format_time(departure.get('at', 'N/A'))
-                                    dep_airport = departure.get('iataCode', 'N/A')
-
-                                    arrival = segment.get('arrival', {})
-                                    arr_time = format_time(arrival.get('at', 'N/A'))
-                                    arr_airport = arrival.get('iataCode', 'N/A')
-
-                                    st.markdown(f"""
-                                    <div style="margin-top: 20px; padding: 16px; border-radius: 12px; border: 1px solid #e0e0e0; box-shadow: 0 2px 5px rgba(0,0,0,0.05); background-color: #ffffff;">
-                                        <h4 style="margin-bottom: 12px; font-size: 20px; color: #333;">✈️ Segment {seg_num}</h4>
-                                        <div style="line-height: 1.8; font-size: 16px; color: #555;">
-                                            <p><strong>Flight:</strong> {carrier} {flight_number}</p>
-                                            <p><strong>Route:</strong> {dep_airport} → {arr_airport}</p>
-                                            <p><strong>Departure:</strong> {dep_time}</p>
-                                            <p><strong>Arrival:</strong> {arr_time}</p>
-                                        </div>
-                                    </div>
-                                    """, unsafe_allow_html=True)
-
-
-
                         # Display cabin and baggage information
                         st.markdown("---\n### 🧳 Additional Details")
                         traveler_pricings = flight.get('travelerPricings', [])
@@ -377,4 +355,25 @@ else:
 
             if st.button("Edit Travel Preferences", type="secondary"):
                 st.switch_page("pages/preferences.py")
+
+            # 添加'继续规划'按钮，以跳转到偏好设置或直接生成行程
+            st.write("---")
+            st.write("### 继续您的旅行计划")
+            
+            col3, col4 = st.columns(2)
+            with col3:
+                if st.button("添加偏好设置", type="secondary"):
+                    # 确保所有必要的数据都已保存到session_state
+                    if 'tempdata' not in st.session_state:
+                        st.session_state['tempdata'] = tempdata
+                    st.switch_page("pages/preferences.py")
+            
+            with col4:
+                if st.button("直接生成旅行计划", type="primary"):
+                    # 设置firstround确保初次加载chatbot页面会自动生成行程
+                    st.session_state.firstround = True
+                    # 确保所有必要的数据都已保存到session_state
+                    if 'tempdata' not in st.session_state:
+                        st.session_state['tempdata'] = tempdata
+                    st.switch_page("pages/chatbot.py")
 
