@@ -347,3 +347,42 @@ def format_time(dt_str):
         return dt.strftime('%b %d, %Y at %I:%M %p')
     except:
         return dt_str  # fallback in case format is unexpected
+    
+import pandas as pd
+import os
+import pandas as pd
+import os
+
+def save_all_tempdata_to_memorybank(user_no: str):
+    # Define user directory and file paths
+    user_dir = os.path.join("database", f"user_{user_no}")
+    temp_path = os.path.join(user_dir, "temp.csv")
+    memorybank_path = os.path.join(user_dir, "memorybank.csv")
+
+    # Ensure directory exists
+    os.makedirs(user_dir, exist_ok=True)
+
+    # Try loading temp.csv from user_dir
+    try:
+        temp_df = pd.read_csv(temp_path)
+    except FileNotFoundError:
+        print(f"❌ {temp_path} not found.")
+        return
+
+    if temp_df.empty:
+        print(f"⚠️ {temp_path} is empty.")
+        return
+
+    # Load and append to memorybank if it exists
+    if os.path.exists(memorybank_path):
+        existing_df = pd.read_csv(memorybank_path)
+        combined_df = pd.concat([existing_df, temp_df], ignore_index=True)
+        combined_df.drop_duplicates(subset=["timestamp"], inplace=True)
+        print(f"📁 Appending to existing memorybank at {memorybank_path}")
+    else:
+        combined_df = temp_df
+        print(f"📁 Creating new memorybank at {memorybank_path}")
+
+    # Save the updated memorybank
+    combined_df.to_csv(memorybank_path, index=False)
+    print(f"✅ All entries from temp.csv saved to {memorybank_path}")

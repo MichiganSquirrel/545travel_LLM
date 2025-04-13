@@ -8,6 +8,12 @@ if "user_no" not in st.session_state:
 #     st.session_state.user_no = None
 #     st.rerun()
 
+st.set_page_config(
+    page_title="User Login",
+    page_icon="🔐",
+    initial_sidebar_state='collapsed',
+)
+
 st.title("EECS 545 Travel Planner 🌏")
 st.logo("images/TravelPlanner_Logo.png", icon_image="images/TravelPlanner_Logo.png")
 user_no = st.session_state.user_no

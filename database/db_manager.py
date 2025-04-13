@@ -411,47 +411,47 @@ class DatabaseManager:
             
         return filename
     
-    def get_user_history(self, user_id: str) -> List[Dict[str, Any]]:
-        """
-        Get user recommendation history from recommend.csv
+    # def get_user_history(self, user_id: str) -> List[Dict[str, Any]]:
+    #     """
+    #     Get user recommendation history from recommend.csv
         
-        Args:
-            user_id: User ID
+    #     Args:
+    #         user_id: User ID
             
-        Returns:
-            List of user's previous travel plans
-        """
-        user_dir = self._get_user_dir(user_id)
-        recommend_file = os.path.join(user_dir, "recommend.csv")
+    #     Returns:
+    #         List of user's previous travel plans
+    #     """
+    #     user_dir = self._get_user_dir(user_id)
+    #     recommend_file = os.path.join(user_dir, "recommend.csv")
         
-        if not os.path.exists(recommend_file):
-            return []
+    #     if not os.path.exists(recommend_file):
+    #         return []
             
-        try:
-            # Read the CSV file
-            df = pd.read_csv(recommend_file)
-            if df.empty:
-                return []
+    #     try:
+    #         # Read the CSV file
+    #         df = pd.read_csv(recommend_file)
+    #         if df.empty:
+    #             return []
                 
-            # Convert to list of dictionaries
-            history = []
-            for _, row in df.iterrows():
-                item = row.to_dict()
-                # Parse JSON fields
-                if "travel_plan" in item:
-                    try:
-                        item["travel_plan"] = json.loads(item["travel_plan"])
-                    except:
-                        pass
-                history.append(item)
+    #         # Convert to list of dictionaries
+    #         history = []
+    #         for _, row in df.iterrows():
+    #             item = row.to_dict()
+    #             # Parse JSON fields
+    #             if "travel_plan" in item:
+    #                 try:
+    #                     item["travel_plan"] = json.loads(item["travel_plan"])
+    #                 except:
+    #                     pass
+    #             history.append(item)
             
-            # Sort by timestamp (newest first)
-            history.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
+    #         # Sort by timestamp (newest first)
+    #         history.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
             
-            return history
-        except Exception as e:
-            print(f"Error reading recommend file: {str(e)}")
-            return []
+    #         return history
+    #     except Exception as e:
+    #         print(f"Error reading recommend file: {str(e)}")
+    #         return []
     
     def get_flight_data_as_json(self, user_id: str) -> Dict[str, Any]:
         """

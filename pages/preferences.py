@@ -7,9 +7,9 @@ import datetime
 # Divider and section title
 from utils import fix_existing_temp_file
 st.set_page_config(
-        page_title="User Preferences",
-        page_icon="🛠️",
-        initial_sidebar_state='collapsed'
+    page_title="User Preferences",
+    page_icon="🛠️",
+    initial_sidebar_state='collapsed'
  )
 st.title("EECS 545 Travel Planner 🌏")
 st.logo("images/TravelPlanner_Logo.png", icon_image="images/TravelPlanner_Logo.png")
@@ -131,7 +131,7 @@ else:
         else:
             preferences.update({
                 "activity_categories": st.session_state.activity_categories_selected,
-                "hotel_price_level": st.session_state,
+                "hotel_price_level": st.session_state.hotel_price_level,
                 "cuisine_regions": st.session_state.cuisine_regions_selected
             })
 
@@ -217,3 +217,35 @@ else:
         if 'firstround' not in st.session_state:
             st.session_state.firstround = True
         st.switch_page("pages/chatbot.py")
+
+
+    # if st.button("Generate Detailed Travel Plan", key="gen_plan_button"):
+    #     places_result = None
+    #     try:
+    #         import pandas as pd
+    #         import json
+    #         import requests
+    #         df = pd.read_csv(temp_file_path)
+    #         if "user_preferences" in df.columns:
+    #             user_prefs = json.loads(df["user_preferences"].iloc[0])
+    #             query_prompt = f"Given the following user preferences, write a simple, concise sentence describing what types of places they might want to visit: {json.dumps(user_prefs)}"
+    #             response = llm_api.generate_text(prompt=query_prompt, temperature=0.7, max_tokens=100)
+    #             query_text = response.get("choices", [{}])[0].get("message", {}).get("content", "").strip()
+ 
+    #             api_payload = {
+    #                 "textQuery": query_text,
+    #                 "languageCode": "en"
+    #             }
+    #             headers = {
+    #                 "Content-Type": "application/json",
+    #                 "X-Goog-Api-Key": os.environ.get("GOOGLE_PLACES_API_KEY", ""),
+    #                 "X-Goog-FieldMask": "places.id,places.displayName,places.formattedAddress,places.types,places.rating,places.userRatingCount"
+    #             }
+    #             r = requests.post("https://places.googleapis.com/v1/places:searchText", headers=headers, json=api_payload)
+    #             if r.status_code == 200:
+    #                 places_result = r.json()
+    #     except Exception as e:
+    #         st.warning(f"Could not fetch Google Places: {str(e)}")
+ 
+    #     if places_result:
+    #         st.session_state.places_result = places_result

@@ -52,7 +52,8 @@ def process_flights_with_llm(flights, user_query):
 st.set_page_config(
         page_title="Flight Search",
         page_icon="✈️",
-        initial_sidebar_state='collapsed'
+        initial_sidebar_state='collapsed',
+        layout="wide"
     )
 st.title("EECS 545 Travel Planner 🌏")
 st.logo("images/TravelPlanner_Logo.png", icon_image="images/TravelPlanner_Logo.png")
@@ -168,8 +169,6 @@ else:
                 "destination": destination,
                 "departure_date": formatted_date,
                 "return_date": formatted_end_date,
-                "budget": "medium",  # Default value
-                "interests": ["convenience", "value"],  # Default interests
                 "user_id": st.session_state.user_no,
                 "cabin_class": cabin_class,
                 "adults": num_adults,
@@ -197,8 +196,6 @@ else:
                     "destination": user_query.get("destination", ""),
                     "departure_date": user_query.get("departure_date", ""),
                     "return_date": user_query.get("return_date", ""),
-                    "budget": user_query.get("budget", "medium"),
-                    "interests": user_query.get("interests", []),
                     "query_type": "flight_search"
                 }
                 
@@ -295,7 +292,7 @@ else:
                 st.session_state.selected_flight = st.session_state.flight_options[selected_index]
                 st.session_state.user_query["selected_flight_index"] = selected_index
                 save_success, tempdata = save_user_selection(st.session_state.user_query, st.session_state.selected_flight, st.session_state.flight_options, feedback)
-                
+
                 # 确保tempdata被正确设置到session state
                 if tempdata:
                     st.session_state['tempdata'] = tempdata
@@ -356,24 +353,24 @@ else:
             if st.button("Edit Travel Preferences", type="secondary"):
                 st.switch_page("pages/preferences.py")
 
-            # 添加'继续规划'按钮，以跳转到偏好设置或直接生成行程
-            st.write("---")
-            st.write("### 继续您的旅行计划")
+            # # 添加'继续规划'按钮，以跳转到偏好设置或直接生成行程
+            # st.write("---")
+            # st.write("### 继续您的旅行计划")
             
-            col3, col4 = st.columns(2)
-            with col3:
-                if st.button("添加偏好设置", type="secondary"):
-                    # 确保所有必要的数据都已保存到session_state
-                    if 'tempdata' not in st.session_state:
-                        st.session_state['tempdata'] = tempdata
-                    st.switch_page("pages/preferences.py")
+            # col3, col4 = st.columns(2)
+            # with col3:
+            #     if st.button("添加偏好设置", type="secondary"):
+            #         # 确保所有必要的数据都已保存到session_state
+            #         if 'tempdata' not in st.session_state:
+            #             st.session_state['tempdata'] = tempdata
+            #         st.switch_page("pages/preferences.py")
             
-            with col4:
-                if st.button("直接生成旅行计划", type="primary"):
-                    # 设置firstround确保初次加载chatbot页面会自动生成行程
-                    st.session_state.firstround = True
-                    # 确保所有必要的数据都已保存到session_state
-                    if 'tempdata' not in st.session_state:
-                        st.session_state['tempdata'] = tempdata
-                    st.switch_page("pages/chatbot.py")
+            # with col4:
+            #     if st.button("直接生成旅行计划", type="primary"):
+            #         # 设置firstround确保初次加载chatbot页面会自动生成行程
+            #         st.session_state.firstround = True
+            #         # 确保所有必要的数据都已保存到session_state
+            #         if 'tempdata' not in st.session_state:
+            #             st.session_state['tempdata'] = tempdata
+            #         st.switch_page("pages/chatbot.py")
 

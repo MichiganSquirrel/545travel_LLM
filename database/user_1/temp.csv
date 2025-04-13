@@ -1,2 +1,2 @@
 timestamp,origin,destination,arrival_time,departure_time,cabin_type,activity_interests_cultural,activity_interests_nature_outdoors,activity_interests_entertainment,activity_interests_shopping,activity_interests_recreation,activity_interests_nightlife,hotel_preferences,food_preferences_asian,food_preferences_european,food_preferences_american_latin,food_preferences_middle_eastern,food_preferences_african,food_preferences_caribbean,food_preferences_local_cuisine
-20250406_212554,"Detroit, MI (DTW)",Tokyo (HND),2025-04-15T15:40:00,2025-04-21T18:10:00,ECONOMY,1,0,0,1,0,0,Luxury,1,0,0,0,0,0,1
+20250412_213309,"Detroit, MI (DTW)",Reykjavik (KEF),2025-04-22T06:25:00,2025-04-28T16:55:00,ECONOMY,0,1,0,1,0,0,Luxury,0,0,1,0,0,0,1
